@@ -57,20 +57,20 @@ namespace Metro.Forms
             set { _visualManager = value; Refresh(); }
         }
 
-        private Color _metroBackgroundColor = Color.Transparent;
+        private Color _metroBackgroundColor = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroBackgroundColor
         {
             get
             {
-                if (_metroBackgroundColor != Color.Transparent)
+                if (_metroBackgroundColor != Color.Empty)
                     return _metroBackgroundColor;
                 return VisualManager.MetroWindowBackgroundColor;
             }
             set { _metroBackgroundColor = value; Refresh(); }
         }
 
-        private Color _metroBorderColor = Color.Transparent;
+        private Color _metroBorderColor = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroBorderColor
         {
@@ -79,20 +79,20 @@ namespace Metro.Forms
                 if (!IsActive && !DesignMode)
                     return VisualManager.MetroWindowBorderColorDisabled;
 
-                if (_metroBorderColor != Color.Transparent)
+                if (_metroBorderColor != Color.Empty)
                     return _metroBorderColor;
                 return VisualManager.MetroWindowBorderColorNormal;
             }
             set { _metroBorderColor = value; Refresh(); }
         }
 
-        private Color _metroTitleTextColor = Color.Transparent;
+        private Color _metroTitleTextColor = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroTitleTextColor
         {
             get
             {
-                if (_metroTitleTextColor != Color.Transparent)
+                if (_metroTitleTextColor != Color.Empty)
                     return _metroTitleTextColor;
                 return VisualManager.MetroWindowTitleColor;
             }
@@ -112,104 +112,104 @@ namespace Metro.Forms
             set { _metroTitleFont = value; Refresh(); }
         }
 
-        private Color _metroTitleTextBackgroundColor = Color.Transparent;
+        private Color _metroTitleTextBackgroundColor = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroTitleBackgroundColor
         {
             get
             {
-                if (_metroTitleTextBackgroundColor != Color.Transparent)
+                if (_metroTitleTextBackgroundColor != Color.Empty)
                     return _metroTitleTextBackgroundColor;
                 return VisualManager.MetroWindowTitleBackgroundColor;
             }
             set { _metroTitleTextBackgroundColor = value; Refresh(); }
         }
 
-        private Color _metroSysButtonNormal = Color.Transparent;
+        private Color _metroSysButtonNormal = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroSysButtonNormal
         {
             get
             {
-                if (_metroSysButtonNormal != Color.Transparent)
+                if (_metroSysButtonNormal != Color.Empty)
                     return _metroSysButtonNormal;
                 return VisualManager.MetroWindowSysButtonBackNormal;
             }
             set { _metroSysButtonNormal = value; Refresh(); }
         }
 
-        private Color _metroSysButtonHover = Color.Transparent;
+        private Color _metroSysButtonHover = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroSysButtonHover
         {
             get
             {
-                if (_metroSysButtonHover != Color.Transparent)
+                if (_metroSysButtonHover != Color.Empty)
                     return _metroSysButtonHover;
                 return VisualManager.MetroWindowSysButtonBackHover;
             }
             set { _metroSysButtonHover = value; Refresh(); }
         }
 
-        private Color _metroSysButtonPressed = Color.Transparent;
+        private Color _metroSysButtonPressed = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroSysButtonPressed
         {
             get
             {
-                if (_metroSysButtonPressed != Color.Transparent)
+                if (_metroSysButtonPressed != Color.Empty)
                     return _metroSysButtonPressed;
                 return VisualManager.MetroWindowSysButtonBackPressed;
             }
             set { _metroSysButtonPressed = value; Refresh(); }
         }
 
-        private Color _metroSysButtonTextNormal = Color.Transparent;
+        private Color _metroSysButtonTextNormal = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroSysButtonTextNormal
         {
             get
             {
-                if (_metroSysButtonTextNormal != Color.Transparent)
+                if (_metroSysButtonTextNormal != Color.Empty)
                     return _metroSysButtonTextNormal;
                 return VisualManager.MetroWindowSysButtonTextNormal;
             }
             set { _metroSysButtonTextNormal = value; Refresh(); }
         }
 
-        private Color _metroSysButtonTextHover = Color.Transparent;
+        private Color _metroSysButtonTextHover = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroSysButtonTextHover
         {
             get
             {
-                if (_metroSysButtonTextHover != Color.Transparent)
+                if (_metroSysButtonTextHover != Color.Empty)
                     return _metroSysButtonTextHover;
                 return VisualManager.MetroWindowSysButtonTextHover;
             }
             set { _metroSysButtonTextHover = value; Refresh(); }
         }
 
-        private Color _metroSysButtonTextPressed = Color.Transparent;
+        private Color _metroSysButtonTextPressed = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroSysButtonTextPressed
         {
             get
             {
-                if (_metroSysButtonTextPressed != Color.Transparent)
+                if (_metroSysButtonTextPressed != Color.Empty)
                     return _metroSysButtonTextPressed;
                 return VisualManager.MetroWindowSysButtonTextPressed;
             }
             set { _metroSysButtonTextPressed = value; Refresh(); }
         }
 
-        private Color _metroResizeGripColor = Color.Transparent;
+        private Color _metroResizeGripColor = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroResizeGripColor
         {
             get
             {
-                if (_metroResizeGripColor != Color.Transparent)
+                if (_metroResizeGripColor != Color.Empty)
                     return _metroResizeGripColor;
                 return VisualManager.MetroWindowResizeGripColor;
             }
@@ -346,6 +346,24 @@ namespace Metro.Forms
 
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             UpdateMetroWindowButtons();
+
+            ControlAdded += MetroWindow_ControlAdded;
+        }
+
+        void MetroWindow_ControlAdded(object sender, ControlEventArgs e)
+        {
+            if (e.Control is IMetroControl)
+            {
+                ((IMetroControl)e.Control).StileMetro = StileMetro;
+                ((IMetroControl)e.Control).CombinazioneColori = CombinazioneColori;
+                ((IMetroControl)e.Control).VisualManager = VisualManager;
+            }
+            else if (e.Control is IMetroComponent)
+            {
+                ((IMetroComponent)e.Control).StileMetro = StileMetro;
+                ((IMetroComponent)e.Control).CombinazioneColori = CombinazioneColori;
+                ((IMetroComponent)e.Control).VisualManager = VisualManager;
+            }
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -689,7 +707,7 @@ namespace Metro.Forms
                 MessageBox.Show(ex.Message);
             }
         }
-
+        
         #endregion
 
         #region Ombre

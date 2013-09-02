@@ -37,39 +37,39 @@ namespace Metro.Controlli
             set { _visualManager = value; }
         }
 
-        private Color _metroBackgroundColor = Color.Transparent;
+        private Color _metroBackgroundColor = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroBackgroundColor
         {
             get
             {
-                if (_metroBackgroundColor != Color.Transparent)
+                if (_metroBackgroundColor != Color.Empty)
                     return _metroBackgroundColor;
                 return VisualManager.MetroToolTipBackgroundColor;
             }
             set { _metroBackgroundColor = value; }
         }
         
-        private Color _metroBorderColor = Color.Transparent;
+        private Color _metroBorderColor = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroBorderColor
         {
             get
             {
-                if (_metroBorderColor != Color.Transparent)
+                if (_metroBorderColor != Color.Empty)
                     return _metroBorderColor;
                 return VisualManager.MetroToolTipBorderColor;
             }
             set { _metroBorderColor = value; }
         }
 
-        private Color _metroTextColor = Color.Transparent;
+        private Color _metroTextColor = Color.Empty;
         [Category(EtichetteDesigner.Stile)]
         public Color MetroTextColor
         {
             get
             {
-                if (_metroTextColor != Color.Transparent)
+                if (_metroTextColor != Color.Empty)
                     return _metroTextColor;
                 return VisualManager.MetroToolTipTextColor;
             }

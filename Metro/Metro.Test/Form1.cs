@@ -34,7 +34,7 @@ namespace Metro.Test
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            metroButton1.Enabled = !metroButton1.Enabled;
+            //metroButton1.Enabled = !metroButton1.Enabled;
         }
     }
 }

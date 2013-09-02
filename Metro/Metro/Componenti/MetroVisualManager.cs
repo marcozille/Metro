@@ -472,6 +472,10 @@ namespace Metro.Componenti
                     MetroWindowSysButtonTextHover = Color.FromArgb(0, 122, 204);
                     MetroWindowSysButtonTextPressed = Color.White;
                     #endregion
+                    #region Buttons
+                    MetroButtonBackgroundPressed = Color.FromArgb(0, 122, 204);
+                    MetroButtonTextPressed = Color.FromArgb(255,255,255);
+                    #endregion
                     #endregion
                     //WindowBorderColor           = Color.FromArgb(0, 122, 204);
                     //WindowButtonHoverTextColor  = Color.FromArgb(0, 122, 204);
