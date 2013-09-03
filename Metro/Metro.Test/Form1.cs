@@ -18,8 +18,8 @@ namespace Metro.Test
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        
+        private void metroButton1_Click(object sender, EventArgs e)
         {
             if (StileMetro == Componenti.StileMetro.Chiaro)
                 StileMetro = Componenti.StileMetro.Scuro;
@@ -27,14 +27,16 @@ namespace Metro.Test
                 StileMetro = Componenti.StileMetro.Chiaro;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MetroMessageBox.Show("Prima prova della nuova messagebox!", "Test :)");
-        }
-
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            //metroButton1.Enabled = !metroButton1.Enabled;
+            //MetroMessageBox.BackgroundColor = Color.Green;
+            switch (MetroMessageBox.Show("Vediamo un pò se funziona meglio ora", "Secondo test!!! :D", MetroMessageBox.MBX_Button.OKANNULLA))
+            {
+                case MetroMessageBox.MBS_Risultato.SI: MetroMessageBox.Show("premuto SI"); break;
+                case MetroMessageBox.MBS_Risultato.NO: MetroMessageBox.Show("premuto NO"); break;
+                case MetroMessageBox.MBS_Risultato.ANNULLA: MetroMessageBox.Show("premuto ANNULLA"); break;
+                case MetroMessageBox.MBS_Risultato.OK: MetroMessageBox.Show("premuto OK"); break;
+            }
         }
     }
 }

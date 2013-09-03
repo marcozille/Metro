@@ -36,6 +36,7 @@ namespace Metro.Forms
         }
 
         [Category(EtichetteDesigner.Stile)]
+        [RefreshProperties(RefreshProperties.Repaint)]
         public StileMetro StileMetro
         {
             get { return VisualManager.StileMetro; }
@@ -43,6 +44,7 @@ namespace Metro.Forms
         }
 
         [Category(EtichetteDesigner.Stile)]
+        [RefreshProperties(RefreshProperties.Repaint)]
         public CombinazionaColori CombinazioneColori
         {
             get { return VisualManager.CombinazioneColori; }
@@ -347,24 +349,24 @@ namespace Metro.Forms
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             UpdateMetroWindowButtons();
 
-            ControlAdded += MetroWindow_ControlAdded;
+            //ControlAdded += MetroWindow_ControlAdded;
         }
 
-        void MetroWindow_ControlAdded(object sender, ControlEventArgs e)
-        {
-            if (e.Control is IMetroControl)
-            {
-                ((IMetroControl)e.Control).StileMetro = StileMetro;
-                ((IMetroControl)e.Control).CombinazioneColori = CombinazioneColori;
-                ((IMetroControl)e.Control).VisualManager = VisualManager;
-            }
-            else if (e.Control is IMetroComponent)
-            {
-                ((IMetroComponent)e.Control).StileMetro = StileMetro;
-                ((IMetroComponent)e.Control).CombinazioneColori = CombinazioneColori;
-                ((IMetroComponent)e.Control).VisualManager = VisualManager;
-            }
-        }
+        //void MetroWindow_ControlAdded(object sender, ControlEventArgs e)
+        //{
+        //    if (e.Control is IMetroControl)
+        //    {
+        //        ((IMetroControl)e.Control).StileMetro = StileMetro;
+        //        ((IMetroControl)e.Control).CombinazioneColori = CombinazioneColori;
+        //        ((IMetroControl)e.Control).VisualManager = VisualManager;
+        //    }
+        //    else if (e.Control is IMetroComponent)
+        //    {
+        //        ((IMetroComponent)e.Control).StileMetro = StileMetro;
+        //        ((IMetroComponent)e.Control).CombinazioneColori = CombinazioneColori;
+        //        ((IMetroComponent)e.Control).VisualManager = VisualManager;
+        //    }
+        //}
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -606,7 +608,7 @@ namespace Metro.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("1" + ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -1308,7 +1310,7 @@ namespace Metro.Forms
             _tooltip.CombinazioneColori = CombinazioneColori;
             _tooltip.VisualManager = VisualManager;
         }
-
+        
         protected override void OnPaint(PaintEventArgs pevent)
         {
             MetroWindow wndParent = Parent as MetroWindow;

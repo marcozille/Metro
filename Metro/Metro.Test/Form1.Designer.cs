@@ -28,38 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.metroButton1 = new Metro.Controlli.MetroButton();
+            this.metroButton2 = new Metro.Controlli.MetroButton();
             this.SuspendLayout();
             // 
-            // button1
+            // metroButton1
             // 
-            this.button1.Location = new System.Drawing.Point(366, 204);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.metroButton1.Location = new System.Drawing.Point(13, 41);
+            this.metroButton1.MetroFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(187, 23);
+            this.metroButton1.TabIndex = 3;
+            this.metroButton1.Text = "metroButton1";
+            this.metroButton1.UseVisualStyleBackColor = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
-            // button2
+            // metroButton2
             // 
-            this.button2.Location = new System.Drawing.Point(359, 261);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.metroButton2.Location = new System.Drawing.Point(13, 70);
+            this.metroButton2.MetroFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(187, 23);
+            this.metroButton2.TabIndex = 4;
+            this.metroButton2.Text = "metroButton2";
+            this.metroButton2.UseVisualStyleBackColor = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 545);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.MetroTitleTextColor = System.Drawing.Color.White;
+            this.Controls.Add(this.metroButton2);
+            this.Controls.Add(this.metroButton1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -69,8 +70,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private Controlli.MetroButton metroButton1;
+        private Controlli.MetroButton metroButton2;
+
+
+
+
+
 
 
     }

@@ -13,8 +13,10 @@ using System.Drawing.Text;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Reflection;
+using System.Diagnostics;
 
 using Metro.Componenti;
+using Metro.Controlli;
 using Metro.Designer;
 using Metro.Interfaccie;
 
@@ -32,26 +34,43 @@ namespace Metro.Forms
         private string _titolo;
         private string Titolo { set { _titolo = value; Invalidate(); } get { return _titolo; } }
         private MBX_Button Pulsanti;
-        private Button btn_OK;
-        private Button btn_Annulla;
-        private Button btn_Si;
-        private Button btn_No;
+        private MetroButton btn_OK;
+        private MetroButton btn_Annulla;
+        private MetroButton btn_Si;
+        private MetroButton btn_No;
         private MBS_Risultato Risultato;
         private DarkenScreen _darkenScreen;
         private Font _fontTitolo;
         private Font _fontCorpo;
+        private bool ShowOnScreen;
 
-        private MetroMessageBox(String contenuto, string titolo, MBX_Button pulsanti)
+        public static Color HideFormColor = Color.FromArgb(255,255,255);
+        public static Color BackgroundColor = Color.FromArgb(0,0,0);
+        public static Color TitleColor = Color.FromArgb(0,122,204);
+        public static Color ContentColor = Color.FromArgb(255, 255, 255);
+        public static Color ButtonBackNormal  = Color.FromArgb(0,122,204);
+        public static Color ButtonBackHover = Color.FromArgb(0,170,240);
+        public static Color ButtonBackPressed = Color.FromArgb(0,70,160);
+        public static Color ButtonBorder = Color.FromArgb(255,255,255);
+        public static Color ButtonTextNormal = Color.FromArgb(255,255,255);
+        public static Color ButtonTextHover = Color.FromArgb(255,255,255);
+        public static Color ButtonTextPressed = Color.FromArgb(255,255,255);
+
+        private MetroMessageBox(String contenuto, string titolo, MBX_Button pulsanti, bool showOnScreen)
         {
             InitializeComponent();
 
             LoadFont();
-            _darkenScreen = new DarkenScreen();
 
             Contenuto = contenuto;
             Pulsanti = pulsanti;
             Titolo = titolo;
             Risultato = MBS_Risultato.OK;
+            ShowOnScreen = showOnScreen;
+
+            _darkenScreen = new DarkenScreen();
+            _darkenScreen.ColoreOscurazione = HideFormColor;
+            _darkenScreen.ShowOnScreen = ShowOnScreen;
             
             InitDimensioni();
             InitPulsanti();
@@ -88,9 +107,9 @@ namespace Metro.Forms
             _darkenScreen.Close();
         }
 
-        public static MBS_Risultato Show(String contenuto, string titolo = "", MBX_Button pulsanti = MBX_Button.OK)
+        public static MBS_Risultato Show(String contenuto, string titolo = "", MBX_Button pulsanti = MBX_Button.OK, bool showOnScreen = false)
         {
-            MetroMessageBox msgbx = new MetroMessageBox(contenuto, titolo, pulsanti);
+            MetroMessageBox msgbx = new MetroMessageBox(contenuto, titolo, pulsanti, showOnScreen);
 
             msgbx.BeginDarken();
             msgbx.ShowDialog();
@@ -165,17 +184,25 @@ namespace Metro.Forms
 
         private void InitDimensioni()
         {
-            Rectangle schermo = Screen.PrimaryScreen.Bounds;
-
-            Bounds = new Rectangle(0, (schermo.Height - 280) / 2, schermo.Width, 280);
+            if (ShowOnScreen)
+            {
+                Rectangle schermo = Screen.PrimaryScreen.Bounds;
+                Bounds = new Rectangle(0, (schermo.Height - 280) / 2, schermo.Width, 280);
+            }
+            else
+            {
+                Form mainFrm = Application.OpenForms[0];
+                Rectangle formRect = mainFrm.Bounds;
+                Bounds = new Rectangle(formRect.X, formRect.Y + (formRect.Height - 280) / 2, formRect.Width, 280);
+            }
         }
 
         private void InitializeComponent()
         {
-            this.btn_OK = new Button();
-            this.btn_Annulla = new Button();
-            this.btn_Si = new Button();
-            this.btn_No = new Button();
+            this.btn_OK = new MetroButton();
+            this.btn_Annulla = new MetroButton();
+            this.btn_Si = new MetroButton();
+            this.btn_No = new MetroButton();
             this.SuspendLayout();
             // 
             // btn_OK
@@ -188,6 +215,13 @@ namespace Metro.Forms
             this.btn_OK.Text = "OK";
             this.btn_OK.UseVisualStyleBackColor = true;
             this.btn_OK.Click += new System.EventHandler(this.btn_OK_Click);
+            this.btn_OK.MetroBorder = ButtonBorder;
+            this.btn_OK.MetroBackground = ButtonBackNormal;
+            this.btn_OK.MetroBackgroundHover = ButtonBackHover;
+            this.btn_OK.MetroBackgroundPressed = ButtonBackPressed;
+            this.btn_OK.MetroText = ButtonTextNormal;
+            this.btn_OK.MetroTextHover = ButtonTextHover;
+            this.btn_OK.MetroTextPressed = ButtonTextPressed;
             // 
             // btn_Annulla
             // 
@@ -199,6 +233,13 @@ namespace Metro.Forms
             this.btn_Annulla.Text = "Annulla";
             this.btn_Annulla.UseVisualStyleBackColor = true;
             this.btn_Annulla.Click += new System.EventHandler(this.btn_Annulla_Click);
+            this.btn_Annulla.MetroBorder = ButtonBorder;
+            this.btn_Annulla.MetroBackground = ButtonBackNormal;
+            this.btn_Annulla.MetroBackgroundHover = ButtonBackHover;
+            this.btn_Annulla.MetroBackgroundPressed = ButtonBackPressed;
+            this.btn_Annulla.MetroText = ButtonTextNormal;
+            this.btn_Annulla.MetroTextHover = ButtonTextHover;
+            this.btn_Annulla.MetroTextPressed = ButtonTextPressed;
             // 
             // btn_Si
             // 
@@ -210,6 +251,13 @@ namespace Metro.Forms
             this.btn_Si.Text = "Si";
             this.btn_Si.UseVisualStyleBackColor = true;
             this.btn_Si.Click += new System.EventHandler(this.btn_Si_Click);
+            this.btn_Si.MetroBorder = ButtonBorder;
+            this.btn_Si.MetroBackground = ButtonBackNormal;
+            this.btn_Si.MetroBackgroundHover = ButtonBackHover;
+            this.btn_Si.MetroBackgroundPressed = ButtonBackPressed;
+            this.btn_Si.MetroText = ButtonTextNormal;
+            this.btn_Si.MetroTextHover = ButtonTextHover;
+            this.btn_Si.MetroTextPressed = ButtonTextPressed;
             // 
             // btn_No
             // 
@@ -221,6 +269,13 @@ namespace Metro.Forms
             this.btn_No.Text = "No";
             this.btn_No.UseVisualStyleBackColor = true;
             this.btn_No.Click += new System.EventHandler(this.btn_No_Click);
+            this.btn_No.MetroBorder = ButtonBorder;
+            this.btn_No.MetroBackground = ButtonBackNormal;
+            this.btn_No.MetroBackgroundHover = ButtonBackHover;
+            this.btn_No.MetroBackgroundPressed = ButtonBackPressed;
+            this.btn_No.MetroText = ButtonTextNormal;
+            this.btn_No.MetroTextHover = ButtonTextHover;
+            this.btn_No.MetroTextPressed = ButtonTextPressed;
             // 
             // MetroMessageBox
             // 
@@ -258,9 +313,19 @@ namespace Metro.Forms
 
         private bool ControllaDimensioni()
         {
-            Rectangle schermo = Screen.PrimaryScreen.Bounds;
-
-            Rectangle bounds = new Rectangle(0, (schermo.Height - 280) / 2, schermo.Width, 280);
+            Rectangle bounds;
+            
+            if (ShowOnScreen)
+            {
+                Rectangle schermo = Screen.PrimaryScreen.Bounds;
+                bounds = new Rectangle(0, (schermo.Height - 280) / 2, schermo.Width, 280);
+            }
+            else
+            {
+                Form mainFrm = Application.OpenForms[0];
+                Rectangle formRect = mainFrm.Bounds;
+                bounds = new Rectangle(0, (formRect.Height - 280) / 2, formRect.Width, 280);
+            }
             
             if (Bounds != bounds)
                 return false;
@@ -275,7 +340,7 @@ namespace Metro.Forms
                 InitPulsanti();
             }
 
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(0, 122, 204)), ClientRectangle);
+            e.Graphics.FillRectangle(new SolidBrush(BackgroundColor), ClientRectangle);
 
             int larghezza = ClientRectangle.Width - (int)(ClientRectangle.Width * 0.3);
             int padding = (ClientRectangle.Width - larghezza) / 2;
@@ -283,13 +348,16 @@ namespace Metro.Forms
             Rectangle titleRc = new Rectangle(new Point(padding, 20), new Size(larghezza, 35));
             Rectangle textRc = new Rectangle(new Point(padding + 3, titleRc.Location.Y + titleRc.Height + 10), new Size(larghezza, ClientRectangle.Height - 60));
 
-            TextRenderer.DrawText(e.Graphics, Titolo, _fontTitolo, titleRc, Color.White, TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.EndEllipsis);
-            TextRenderer.DrawText(e.Graphics, Contenuto, _fontCorpo, textRc, Color.White, TextFormatFlags.Left | TextFormatFlags.WordBreak);
+            TextRenderer.DrawText(e.Graphics, Titolo, _fontTitolo, titleRc, TitleColor, TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.EndEllipsis);
+            TextRenderer.DrawText(e.Graphics, Contenuto, _fontCorpo, textRc, ContentColor, TextFormatFlags.Left | TextFormatFlags.WordBreak);
         }
     }
 
     class DarkenScreen : Form
     {
+        public Color ColoreOscurazione = Color.Black;
+        public bool ShowOnScreen;
+
         public DarkenScreen()
         {
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -308,7 +376,7 @@ namespace Metro.Forms
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            e.Graphics.FillRectangle(new SolidBrush(Color.Black), ClientRectangle);
+            e.Graphics.FillRectangle(new SolidBrush(ColoreOscurazione), ClientRectangle);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -318,13 +386,19 @@ namespace Metro.Forms
             int largezza = 0;
             int altezza = 0;
 
-            foreach (Screen scr in Screen.AllScreens)
+            if (ShowOnScreen)
             {
-                if (scr.Bounds.Height > altezza) altezza = scr.Bounds.Height;
-                largezza += scr.Bounds.Width;
+                foreach (Screen scr in Screen.AllScreens)
+                {
+                    if (scr.Bounds.Height > altezza) altezza = scr.Bounds.Height;
+                    largezza += scr.Bounds.Width;
+                }
+                Bounds = new Rectangle(0, 0, largezza, altezza);
             }
-
-            Bounds = new Rectangle(0, 0, largezza, altezza);
+            else
+            {
+                Bounds = Form.ActiveForm.Bounds;
+            }
         }
     }
 }

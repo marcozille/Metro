@@ -218,8 +218,22 @@ namespace Metro.Componenti
             MetroWindowTitleFont = new Font(fontCollection.Families[0], 12.5f);
         }
 
+        private bool _bColorsUpdated = false;
+
         private CombinazionaColori _combinazioneColori;
-        public CombinazionaColori CombinazioneColori { get { return _combinazioneColori; } set { _combinazioneColori = value; UpdateColors(); } }
+        public CombinazionaColori CombinazioneColori 
+        { 
+            get 
+            { 
+                return _combinazioneColori; 
+            } 
+
+            set 
+            { 
+                _combinazioneColori = value; 
+                UpdateColors(); 
+            } 
+        }
 
         private StileMetro _stileMentro;
         public StileMetro StileMetro { get { return _stileMentro; } set { _stileMentro = value; UpdateColors(); } }

@@ -16,25 +16,22 @@ namespace Metro.Controlli
     public class MetroButton : Button, IMetroControl
     {
         #region proprietà
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        [Category(EtichetteDesigner.Stile)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Category(EtichetteDesigner.Stile)]
         public StileMetro StileMetro
         {
             get { return VisualManager.StileMetro; }
-            set { VisualManager.StileMetro = value; }
+            set { VisualManager.StileMetro = value; Refresh(); }
         }
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        [Category(EtichetteDesigner.Stile)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Category(EtichetteDesigner.Stile)]
         public CombinazionaColori CombinazioneColori
         {
             get { return VisualManager.CombinazioneColori; }
-            set { VisualManager.CombinazioneColori = value; }
+            set { VisualManager.CombinazioneColori = value; Refresh(); }
         }
 
-        private MetroVisualManager _visualManager = null;
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        [Browsable(false)]
+        private MetroVisualManager _visualManager = new MetroVisualManager();
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public MetroVisualManager VisualManager
         {
             get { return _visualManager; }
@@ -42,7 +39,7 @@ namespace Metro.Controlli
         }
 
         private Color _metroBorder = Color.Empty;
-        [Category(EtichetteDesigner.Stile)]
+        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color MetroBorder
         {
             get
@@ -55,7 +52,7 @@ namespace Metro.Controlli
         }
 
         private Color _metroBorderDisabled = Color.Empty;
-        [Category(EtichetteDesigner.Stile)]
+        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color MetroBorderDisabled
         {
             get
@@ -68,7 +65,7 @@ namespace Metro.Controlli
         }
 
         private Color _metroBackground = Color.Empty;
-        [Category(EtichetteDesigner.Stile)]
+        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color MetroBackground
         {
             get
@@ -81,7 +78,7 @@ namespace Metro.Controlli
         }
 
         private Color _metroBackgroundHover = Color.Empty;
-        [Category(EtichetteDesigner.Stile)]
+        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color MetroBackgroundHover
         {
             get
@@ -94,7 +91,7 @@ namespace Metro.Controlli
         }
 
         private Color _metroBackgroundPressed = Color.Empty;
-        [Category(EtichetteDesigner.Stile)]
+        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color MetroBackgroundPressed
         {
             get
@@ -107,7 +104,7 @@ namespace Metro.Controlli
         }
 
         private Color _metroBackgroundDisabled = Color.Empty;
-        [Category(EtichetteDesigner.Stile)]
+        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color MetroBackgroundDisabled
         {
             get
@@ -120,7 +117,7 @@ namespace Metro.Controlli
         }
 
         private Color _metroText = Color.Empty;
-        [Category(EtichetteDesigner.Stile)]
+        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color MetroText
         {
             get
@@ -133,7 +130,7 @@ namespace Metro.Controlli
         }
 
         private Color _metroTextHover = Color.Empty;
-        [Category(EtichetteDesigner.Stile)]
+        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color MetroTextHover
         {
             get
@@ -146,7 +143,7 @@ namespace Metro.Controlli
         }
 
         private Color _metroTextPressed = Color.Empty;
-        [Category(EtichetteDesigner.Stile)]
+        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color MetroTextPressed
         {
             get
@@ -159,7 +156,7 @@ namespace Metro.Controlli
         }
 
         private Color _metroTextDisabled = Color.Empty;
-        [Category(EtichetteDesigner.Stile)]
+        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color MetroTextDisabled
         {
             get
@@ -279,6 +276,24 @@ namespace Metro.Controlli
                     ControlPaint.DrawBorder(g, ClientRectangle, MetroBorder, ButtonBorderStyle.Solid);
                     TextRenderer.DrawText(g, Text, MetroFont, ClientRectangle, MetroText, flags);
                 }
+            }
+        }
+        
+        protected override void OnParentChanged(EventArgs e)
+        {
+            base.OnParentChanged(e);
+
+            if (Parent is IMetroWindow)
+            {
+                VisualManager = ((IMetroWindow)Parent).VisualManager;
+                StileMetro = ((IMetroWindow)Parent).StileMetro;
+                CombinazioneColori = ((IMetroWindow)Parent).CombinazioneColori;
+            }
+            else if (Parent is IMetroControl)
+            {
+                VisualManager = ((IMetroControl)Parent).VisualManager;
+                StileMetro = ((IMetroControl)Parent).StileMetro;
+                CombinazioneColori = ((IMetroControl)Parent).CombinazioneColori;
             }
         }
     }
