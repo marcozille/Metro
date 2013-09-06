@@ -215,6 +215,7 @@ namespace Metro.Componenti
             MetroWindowSysButtonFont = new Font("Webdings", 10f);
             MetroToolTipFont = new Font(fontCollection.Families[0], 10f);
             MetroButtonFont = new Font(fontCollection.Families[0], 10f);
+            MetroTextBoxFont = new Font(fontCollection.Families[0], 10f);
             MetroWindowTitleFont = new Font(fontCollection.Families[0], 12.5f);
         }
 
@@ -273,6 +274,21 @@ namespace Metro.Componenti
         public Color MetroButtonTextPressed { get; set; }
         public Color MetroButtonTextDisabled { get; set; }
         #endregion
+        #region TextBox
+        public Color MetroTextBoxBackColorNormal { get; set; }
+        public Color MetroTextBoxBackColorHover { get; set; }
+        public Color MetroTextBoxBackColorSelected { get; set; }
+        public Color MetroTextBoxBackColorDisabled { get; set; }
+
+        public Color MetroTextBoxBorderColorNormal { get; set; }
+        public Color MetroTextBoxBorderColorSelected { get; set; }
+        public Color MetroTextBoxBorderColorDisabled { get; set; }
+
+        public Color MetroTextBoxTextColorNormal { get; set; }
+        public Color MetroTextBoxTextColorHover { get; set; }
+        public Color MetroTextBoxTextColorSelected { get; set; }
+        public Color MetroTextBoxTextColorDisabled { get; set; }
+        #endregion
         #endregion
         #endregion
 
@@ -281,6 +297,7 @@ namespace Metro.Componenti
         public Font MetroWindowSysButtonFont { get; set; }
         public Font MetroToolTipFont { get; set; }
         public Font MetroButtonFont { get; set; }
+        public Font MetroTextBoxFont { get; set; }
         #endregion
 
         private void UpdateColors()
@@ -314,6 +331,18 @@ namespace Metro.Componenti
                 MetroButtonTextDisabled = Color.FromArgb(170, 170, 170);
                 MetroButtonBorder = Color.FromArgb(240, 240, 240);
                 MetroButtonBorderDisabled = Color.FromArgb(200, 200, 200);
+                #endregion
+                #region TextBox
+                MetroTextBoxBackColorNormal = Color.FromArgb(240, 240, 240);
+                MetroTextBoxBackColorHover = Color.FromArgb(255, 255, 255);
+                MetroTextBoxBackColorSelected = Color.FromArgb(255, 255, 255);
+                MetroTextBoxBackColorDisabled = Color.FromArgb(220, 220, 220);
+                MetroTextBoxBorderColorNormal = Color.FromArgb(180, 180, 180);
+                MetroTextBoxBorderColorDisabled = Color.FromArgb(180, 180, 180);
+                MetroTextBoxTextColorNormal = Color.FromArgb(100, 100, 100);
+                MetroTextBoxTextColorHover = Color.FromArgb(100, 100, 100);
+                MetroTextBoxTextColorSelected = Color.FromArgb(100, 100, 100);
+                MetroTextBoxTextColorDisabled = Color.FromArgb(125, 125, 125);               
                 #endregion
                 #endregion
                 //WindowBackColor = Color.FromArgb(240, 240, 240);
@@ -409,6 +438,18 @@ namespace Metro.Componenti
                 MetroButtonBorder = Color.FromArgb(80, 80, 80);
                 MetroButtonBorderDisabled = Color.FromArgb(55, 55, 55);
                 #endregion
+                #region TextBox
+                MetroTextBoxBackColorNormal = Color.FromArgb(60,60,60);
+                MetroTextBoxBackColorHover = Color.FromArgb(90,90,90);
+                MetroTextBoxBackColorSelected = Color.FromArgb(90, 90, 90);
+                MetroTextBoxBackColorDisabled = Color.FromArgb(80,80,80);
+                MetroTextBoxBorderColorNormal = Color.FromArgb(100,100,100);
+                MetroTextBoxBorderColorDisabled = Color.FromArgb(120,120,120);
+                MetroTextBoxTextColorNormal = Color.FromArgb(180,180,180);
+                MetroTextBoxTextColorHover = Color.FromArgb(180, 180, 180);
+                MetroTextBoxTextColorSelected = Color.FromArgb(180, 180, 180);
+                MetroTextBoxTextColorDisabled = Color.FromArgb(180, 180, 180);
+                #endregion
                 #endregion
                 //WindowBackColor = Color.FromArgb(45, 45, 48);
                 //WindowForeColor = Color.FromArgb(30, 30, 30);
@@ -489,6 +530,9 @@ namespace Metro.Componenti
                     #region Buttons
                     MetroButtonBackgroundPressed = Color.FromArgb(0, 122, 204);
                     MetroButtonTextPressed = Color.FromArgb(255,255,255);
+                    #endregion
+                    #region TextBox
+                    MetroTextBoxBorderColorSelected = Color.FromArgb(0, 122, 204);
                     #endregion
                     #endregion
                     //WindowBorderColor           = Color.FromArgb(0, 122, 204);

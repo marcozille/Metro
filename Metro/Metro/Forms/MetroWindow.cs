@@ -332,6 +332,19 @@ namespace Metro.Forms
                 base.MdiParent = value;
             }
         }
+        
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public override Color BackColor
+        {
+            get
+            {
+                return MetroBackgroundColor;
+            }
+            set
+            {
+                base.BackColor = MetroBackgroundColor;
+            }
+        }
 
         protected bool IsActive = false;
 
@@ -348,25 +361,7 @@ namespace Metro.Forms
 
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             UpdateMetroWindowButtons();
-
-            //ControlAdded += MetroWindow_ControlAdded;
         }
-
-        //void MetroWindow_ControlAdded(object sender, ControlEventArgs e)
-        //{
-        //    if (e.Control is IMetroControl)
-        //    {
-        //        ((IMetroControl)e.Control).StileMetro = StileMetro;
-        //        ((IMetroControl)e.Control).CombinazioneColori = CombinazioneColori;
-        //        ((IMetroControl)e.Control).VisualManager = VisualManager;
-        //    }
-        //    else if (e.Control is IMetroComponent)
-        //    {
-        //        ((IMetroComponent)e.Control).StileMetro = StileMetro;
-        //        ((IMetroComponent)e.Control).CombinazioneColori = CombinazioneColori;
-        //        ((IMetroComponent)e.Control).VisualManager = VisualManager;
-        //    }
-        //}
 
         protected override void OnPaint(PaintEventArgs e)
         {

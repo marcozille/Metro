@@ -123,6 +123,22 @@ namespace Metro
 
         #region Enums
 
+        public enum RedrawWindowFlags : uint
+        {
+            Invalidate = 0x1,
+            InternalPaint = 0x2,
+            Erase = 0x4,
+            Validate = 0x8,
+            NoInternalPaint = 0x10,
+            NoErase = 0x20,
+            NoChildren = 0x40,
+            AllChildren = 0x80,
+            UpdateNow = 0x100,
+            EraseNow = 0x200,
+            Frame = 0x400,
+            NoFrame = 0x800
+        }
+
         public enum ABM : uint
         {
             New = 0x00000000,
@@ -644,6 +660,9 @@ namespace Metro
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern IntPtr SetWindowsHookEx(int idHook, HookProc lpfn, IntPtr hMod, uint dwThreadId);
         public delegate IntPtr HookProc(int nCode, uint wParam, IntPtr lParam);
+
+        [DllImport("user32.dll")]
+        public static extern bool RedrawWindow(IntPtr hWnd, IntPtr lprcUpdate, IntPtr hrgnUpdate, RedrawWindowFlags flags);
 
         #endregion
 

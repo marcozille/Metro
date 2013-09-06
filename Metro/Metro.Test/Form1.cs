@@ -29,14 +29,7 @@ namespace Metro.Test
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            //MetroMessageBox.BackgroundColor = Color.Green;
-            switch (MetroMessageBox.Show("Vediamo un pò se funziona meglio ora", "Secondo test!!! :D", MetroMessageBox.MBX_Button.OKANNULLA))
-            {
-                case MetroMessageBox.MBS_Risultato.SI: MetroMessageBox.Show("premuto SI"); break;
-                case MetroMessageBox.MBS_Risultato.NO: MetroMessageBox.Show("premuto NO"); break;
-                case MetroMessageBox.MBS_Risultato.ANNULLA: MetroMessageBox.Show("premuto ANNULLA"); break;
-                case MetroMessageBox.MBS_Risultato.OK: MetroMessageBox.Show("premuto OK"); break;
-            }
+            MetroMessageBox.Show("Vediamo un pò se funziona meglio ora", "Secondo test!!! :D", MetroMessageBox.MBX_Button.OKANNULLA);
         }
     }
 }

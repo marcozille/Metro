@@ -49,6 +49,9 @@
     <Compile Include="Controlli\MetroButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controlli\MetroTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controlli\MetroToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
