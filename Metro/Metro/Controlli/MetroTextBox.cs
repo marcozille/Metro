@@ -342,12 +342,33 @@ namespace Metro.Controlli
             {
                 if (_isSelected)
                 {
-                    Rectangle rc = new Rectangle(0, 0, Width, Height);
-                    ControlPaint.DrawBorder(g, rc, MetroBorderSelected, 2, ButtonBorderStyle.Solid, MetroBorderSelected, 2, ButtonBorderStyle.Solid,
-                        MetroBorderSelected, 2, ButtonBorderStyle.Solid, MetroBorderSelected, 2, ButtonBorderStyle.Solid);
+                    if (BackColor != MetroBackgroundSelected)
+                        BackColor = MetroBackgroundSelected;
+                    if (ForeColor != MetroTextSelected)
+                        ForeColor = MetroTextSelected;
+
+                    Rectangle rc1 = new Rectangle(0, 0, Width, Height);
+                    ControlPaint.DrawBorder(g, rc1, Parent.BackColor, ButtonBorderStyle.Solid);
+                    Rectangle rc2 = new Rectangle(1, 1, Width - 2, Height - 2);
+                    ControlPaint.DrawBorder(g, rc2, MetroBorderSelected, ButtonBorderStyle.Solid);
                 }
                 else
                 {
+                    if (_isHover)
+                    {
+                        if (BackColor != MetroBackgroundHover)
+                            BackColor = MetroBackgroundHover;
+                        if (ForeColor != MetroTextHover)
+                            ForeColor = MetroTextHover;
+                    }
+                    else
+                    {
+                        if (BackColor != MetroBackground)
+                            BackColor = MetroBackground;
+                        if (ForeColor != MetroText)
+                            ForeColor = MetroText;
+                    }
+
                     Rectangle rc1 = new Rectangle(0, 0, Width, Height);
                     ControlPaint.DrawBorder(g, rc1, Parent.BackColor, ButtonBorderStyle.Solid);
                     Rectangle rc2 = new Rectangle(1, 1, Width - 2, Height - 2);
@@ -356,6 +377,11 @@ namespace Metro.Controlli
             }
             else
             {
+                if (BackColor != MetroBackgroundDisabled)
+                    BackColor = MetroBackgroundDisabled;
+                if (ForeColor != MetroTextDisabled)
+                    ForeColor = MetroTextDisabled;
+
                 Rectangle rc1 = new Rectangle(0, 0, Width, Height);
                 ControlPaint.DrawBorder(g, rc1, Parent.BackColor, ButtonBorderStyle.Solid);
                 Rectangle rc2 = new Rectangle(1, 1, Width - 2, Height - 2);
