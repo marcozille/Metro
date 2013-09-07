@@ -49,6 +49,9 @@
     <Compile Include="Controlli\MetroButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controlli\MetroPasswordBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controlli\MetroTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -71,7 +74,9 @@
     </Compile>
     <Compile Include="WinApi.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\seguisym.ttf" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

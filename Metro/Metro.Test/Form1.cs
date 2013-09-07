@@ -31,5 +31,10 @@ namespace Metro.Test
         {
             MetroMessageBox.Show("Vediamo un pò se funziona meglio ora", "Secondo test!!! :D", MetroMessageBox.MBX_Button.OKANNULLA);
         }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            MetroMessageBox.Show(metroPasswordBox1.Size.ToString());
+        }
     }
 }

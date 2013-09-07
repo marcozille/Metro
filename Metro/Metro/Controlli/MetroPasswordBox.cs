@@ -10,10 +10,11 @@ using System.ComponentModel;
 using Metro.Interfaccie;
 using Metro.Componenti;
 using Metro.Designer;
+using Metro.Controlli;
 
 namespace Metro.Controlli
 {
-    public class MetroTextBox : TextBox
+    public class MetroPasswordBox : UserControl, IMetroControl
     {
         #region proprietà
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Category(EtichetteDesigner.Stile)]
@@ -206,7 +207,7 @@ namespace Metro.Controlli
                 base.BackColor = value;
             }
         }
-        
+
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public override Color ForeColor
         {
@@ -233,208 +234,116 @@ namespace Metro.Controlli
             }
         }
 
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new char PasswordChar
+        public new Size Size
         {
-            get { return base.PasswordChar;/*(char)0;*/ }
-            set { base.PasswordChar = value;/*(char)0;*/ }
-        }
+            get { return base.Size; }
+            set
+            {
+                Size sz = new Size();
+                sz.Width = value.Width;
+                sz.Height = _textBox.Height + SystemInformation.BorderSize.Height * 4 + 3;
 
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new bool UseSystemPasswordChar
-        {
-            get { return base.UseSystemPasswordChar;/*false*/; }
-            set { base.UseSystemPasswordChar = value;/*false*/; }
+                base.Size = sz;
+            }
         }
-
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public new BorderStyle BorderStyle
-        {
-            get { return base.BorderStyle; }
-            set { base.BorderStyle = value; }
-        }
-
+        
         private bool _isHover = false;
         private bool _isSelected = false;
 
         #endregion
 
-        public MetroTextBox()
+        private MetroTextBox _textBox = null;
+
+        public MetroPasswordBox()
             : base()
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor |
                      ControlStyles.OptimizedDoubleBuffer |
-                     ControlStyles.ResizeRedraw, true);
+                     ControlStyles.ResizeRedraw |
+                     ControlStyles.AllPaintingInWmPaint |
+                     ControlStyles.UserPaint, true);
+
+            _textBox = new MetroTextBox();
+            _textBox.UseSystemPasswordChar = true;
+            _textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+
+            _textBox.MouseLeave += _textBox_MouseLeave;
+            _textBox.MouseEnter += _textBox_MouseEnter;
+            _textBox.Enter += _textBox_Enter;
+            _textBox.Leave += _textBox_Leave;
+
+            Controls.Add(_textBox);
+
+            Size = new Size(100, 25);
 
             BackColor = MetroBackground;
-            ForeColor = MetroText;
-            Font = MetroFont;
-
-            PasswordChar = (char)0;
-            UseSystemPasswordChar = false;
         }
-        
-        protected override void OnMouseEnter(EventArgs e)
-        {
-            base.OnMouseEnter(e);
 
+        void _textBox_Leave(object sender, EventArgs e)
+        {
+            if (Enabled)
+            {
+                _isSelected = false;
+                _isHover = false;
+                BackColor = MetroBackground;
+            }
+        }
+
+        void _textBox_Enter(object sender, EventArgs e)
+        {
+            if (Enabled)
+            {
+                _isSelected = true;
+                BackColor = MetroBackgroundSelected;
+                Refresh();
+            }
+        }
+
+        void _textBox_MouseEnter(object sender, EventArgs e)
+        {
             if (!Focused && Enabled == true)
             {
                 _isHover = true;
                 BackColor = MetroBackgroundHover;
                 ForeColor = MetroTextHover;
-                WinApi.SendMessage(this.Handle, (int)WinApi.Messages.WM_NCPAINT, (int)(IntPtr)1, (int)(IntPtr)0); 
             }
         }
 
-        protected override void OnMouseLeave(EventArgs e)
+        void _textBox_MouseLeave(object sender, EventArgs e)
         {
-            base.OnMouseLeave(e);
-
-            if (!Focused && Enabled == true)
+            if (!Focused && !_textBox.Focused && Enabled == true)
             {
-                _isHover = false;
+                _isHover = true;
                 BackColor = MetroBackground;
                 ForeColor = MetroText;
-                WinApi.SendMessage(this.Handle, (int)WinApi.Messages.WM_NCPAINT, (int)(IntPtr)1, (int)(IntPtr)0); 
             }
         }
 
-        protected override void OnEnabledChanged(EventArgs e)
+        protected override void OnSizeChanged(EventArgs e)
         {
-            base.OnEnabledChanged(e);
+            base.OnSizeChanged(e);
+            _textBox.Location = new Point(3, 3);
+            _textBox.Size = new Size(Width - 10 - ((Height - 4) * 2), Height - 4);
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            Rectangle rc = new Rectangle(1, 1, Width - 2, Height - 2);
+
+            g.FillRectangle(new SolidBrush(Parent.BackColor), ClientRectangle);
+            g.FillRectangle(new SolidBrush(BackColor), rc);
+
+            Color clrBorder = Color.Empty;
 
             if (!Enabled)
-            {
-                _isSelected = false;
-                _isHover = false;
-                BackColor = MetroBackgroundDisabled;
-                ForeColor = MetroTextDisabled;
-                WinApi.SendMessage(this.Handle, (int)WinApi.Messages.WM_NCPAINT, (int)(IntPtr)1, (int)(IntPtr)0); 
-            }
+                clrBorder = MetroBorderDisabled;
+            else if (_isSelected)
+                clrBorder = MetroBorderSelected;
             else
-            {
-                BackColor = MetroBackground;
-                ForeColor = MetroText;
-                WinApi.SendMessage(this.Handle, (int)WinApi.Messages.WM_NCPAINT, (int)(IntPtr)1, (int)(IntPtr)0); 
-            }
-        }
+                clrBorder = MetroBorder;
 
-        protected override void OnEnter(EventArgs e)
-        {
-            base.OnEnter(e);
-
-            if (Enabled)
-            {
-                _isSelected = true;
-                BackColor = MetroBackgroundSelected;
-                ForeColor = MetroTextSelected;
-                WinApi.SendMessage(this.Handle, (int)WinApi.Messages.WM_NCPAINT, (int)(IntPtr)1, (int)(IntPtr)0); 
-            }
-        }
-
-        protected override void OnLeave(EventArgs e)
-        {
-            base.OnLeave(e);
-
-            if (Enabled)
-            {
-                _isSelected = false;
-                _isHover = false;
-                BackColor = MetroBackground;
-                ForeColor = MetroText;
-                WinApi.SendMessage(this.Handle, (int)WinApi.Messages.WM_NCPAINT, (int)(IntPtr)1, (int)(IntPtr)0); 
-            }
-        }
-
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == (uint)WinApi.Messages.WM_NCPAINT)
-            {
-                IntPtr hdc = WinApi.GetWindowDC(m.HWnd);
-                Graphics g = Graphics.FromHdc(hdc);
-                OnNCPaint(g);
-                WinApi.ReleaseDC(m.HWnd, hdc);
-                return;
-            }
-
-            base.WndProc(ref m);
-        }
-
-        protected virtual void OnNCPaint(Graphics g)
-        {
-            if (BorderStyle != System.Windows.Forms.BorderStyle.None)
-            {
-                if (Enabled)
-                {
-                    if (_isSelected)
-                    {
-                        if (BackColor != MetroBackgroundSelected)
-                            BackColor = MetroBackgroundSelected;
-                        if (ForeColor != MetroTextSelected)
-                            ForeColor = MetroTextSelected;
-
-                        Rectangle rc1 = new Rectangle(0, 0, Width, Height);
-                        ControlPaint.DrawBorder(g, rc1, Parent.BackColor, ButtonBorderStyle.Solid);
-                        Rectangle rc2 = new Rectangle(1, 1, Width - 2, Height - 2);
-                        ControlPaint.DrawBorder(g, rc2, MetroBorderSelected, ButtonBorderStyle.Solid);
-                    }
-                    else
-                    {
-                        if (_isHover)
-                        {
-                            if (BackColor != MetroBackgroundHover)
-                                BackColor = MetroBackgroundHover;
-                            if (ForeColor != MetroTextHover)
-                                ForeColor = MetroTextHover;
-                        }
-                        else
-                        {
-                            if (BackColor != MetroBackground)
-                                BackColor = MetroBackground;
-                            if (ForeColor != MetroText)
-                                ForeColor = MetroText;
-                        }
-
-                        Rectangle rc1 = new Rectangle(0, 0, Width, Height);
-                        ControlPaint.DrawBorder(g, rc1, Parent.BackColor, ButtonBorderStyle.Solid);
-                        Rectangle rc2 = new Rectangle(1, 1, Width - 2, Height - 2);
-                        ControlPaint.DrawBorder(g, rc2, MetroBorder, ButtonBorderStyle.Solid);
-                    }
-                }
-                else
-                {
-                    if (BackColor != MetroBackgroundDisabled)
-                        BackColor = MetroBackgroundDisabled;
-                    if (ForeColor != MetroTextDisabled)
-                        ForeColor = MetroTextDisabled;
-
-                    Rectangle rc1 = new Rectangle(0, 0, Width, Height);
-                    ControlPaint.DrawBorder(g, rc1, Parent.BackColor, ButtonBorderStyle.Solid);
-                    Rectangle rc2 = new Rectangle(1, 1, Width - 2, Height - 2);
-                    ControlPaint.DrawBorder(g, rc2, MetroBorderDisabled, ButtonBorderStyle.Solid);
-                }
-            }
-        }
-
-        protected override void OnParentChanged(EventArgs e)
-        {
-            base.OnParentChanged(e);
-
-            if (Parent is IMetroWindow)
-            {
-                VisualManager = ((IMetroWindow)Parent).VisualManager;
-                StileMetro = ((IMetroWindow)Parent).StileMetro;
-                CombinazioneColori = ((IMetroWindow)Parent).CombinazioneColori;
-            }
-            else if (Parent is IMetroControl)
-            {
-                VisualManager = ((IMetroControl)Parent).VisualManager;
-                StileMetro = ((IMetroControl)Parent).StileMetro;
-                CombinazioneColori = ((IMetroControl)Parent).CombinazioneColori;
-            }
-
-            WinApi.SendMessage(this.Handle, (int)WinApi.Messages.WM_NCPAINT, (int)(IntPtr)1, (int)(IntPtr)0); 
+            ControlPaint.DrawBorder(g, rc, clrBorder, ButtonBorderStyle.Solid);
         }
     }
 }

@@ -69,5 +69,15 @@ namespace Metro.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] seguisym {
+            get {
+                object obj = ResourceManager.GetObject("seguisym", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
