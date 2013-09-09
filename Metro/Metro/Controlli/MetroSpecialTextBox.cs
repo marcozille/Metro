@@ -17,9 +17,9 @@ using Metro.Controlli;
 
 namespace Metro.Controlli
 {
-    [Designer("Metro.Designer.MetroPasswordBoxDisegner")]
-    [DefaultEvent("Autentica")]
-    public class MetroPasswordBox : UserControl, IMetroControl
+    [Designer("Metro.Designer.MetroSpecialTextBoxDisegner")]
+    [DefaultEvent("PulsanteSpecialeClick")]
+    public class MetroSpecialTextBox : UserControl, IMetroControl
     {
         #region proprietà
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Category(EtichetteDesigner.Stile)]
@@ -56,7 +56,7 @@ namespace Metro.Controlli
             }
             set { _metroBorder = value; Refresh(); }
         }
-        
+
         private Color _metroBorderHover = Color.Empty;
         [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color MetroBorderHover
@@ -200,212 +200,108 @@ namespace Metro.Controlli
             set { _metroTextDisabled = value; Refresh(); }
         }
 
-        private Color _pulsanteVaiBack = Color.Empty;
+        private Color _pulsanteSpecialeBack = Color.Empty;
         [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteVaiBack
+        public Color PulsanteSpecialeBack
         {
             get
             {
-                if (_pulsanteVaiBack != Color.Empty)
-                    return _pulsanteVaiBack;
-                return VisualManager.MetroPasswordBoxVaiButtonBackNormal;
-            }
-            set { _pulsanteVaiBack = value; Refresh(); }
-        }
-
-        private Color _pulsanteVaiBackHover = Color.Empty;
-        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteVaiBackHover
-        {
-            get
-            {
-                if (_pulsanteVaiBackHover != Color.Empty)
-                    return _pulsanteVaiBackHover;
-                return VisualManager.MetroPasswordBoxVaiButtonBackHover;
-            }
-            set { _pulsanteVaiBackHover = value; Refresh(); }
-        }
-
-        private Color _pulsanteVaiBackPressed = Color.Empty;
-        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteVaiBackPressed
-        {
-            get
-            {
-                if (_pulsanteVaiBackPressed != Color.Empty)
-                    return _pulsanteVaiBackPressed;
-                return VisualManager.MetroPasswordBoxVaiButtonBackPressed;
-            }
-            set { _pulsanteVaiBackPressed = value; Refresh(); }
-        }
-
-        private Color _pulsanteVaiBackDisabled = Color.Empty;
-        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteVaiBackDisabled
-        {
-            get
-            {
-                if (_pulsanteVaiBackDisabled != Color.Empty)
-                    return _pulsanteVaiBackDisabled;
-                return VisualManager.MetroPasswordBoxVaiButtonBackDisabled;
-            }
-            set { _pulsanteVaiBackDisabled = value; Refresh(); }
-        }
-
-        private Color _pulsanteVaiText = Color.Empty;
-        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteVaiText
-        {
-            get
-            {
-                if (_pulsanteVaiText != Color.Empty)
-                    return _pulsanteVaiText;
-                return VisualManager.MetroPasswordBoxVaiButtonTextNormal;
-            }
-            set { _pulsanteVaiText = value; Refresh(); }
-        }
-
-        private Color _pulsanteVaiTextHover = Color.Empty;
-        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteVaiTextHover
-        {
-            get
-            {
-                if (_pulsanteVaiTextHover != Color.Empty)
-                    return _pulsanteVaiTextHover;
-                return VisualManager.MetroPasswordBoxVaiButtonTextHover;
-            }
-            set { _pulsanteVaiTextHover = value; Refresh(); }
-        }
-
-        private Color _pulsanteVaiTextPressed = Color.Empty;
-        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteVaiTextPressed
-        {
-            get
-            {
-                if (_pulsanteVaiTextPressed != Color.Empty)
-                    return _pulsanteVaiTextPressed;
-                return VisualManager.MetroPasswordBoxVaiButtonTextPressed;
-            }
-            set { _pulsanteVaiTextPressed = value; Refresh(); }
-        }
-
-        private Color _pulsanteVaiTextDisabled = Color.Empty;
-        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteVaiTextDisabled
-        {
-            get
-            {
-                if (_pulsanteVaiTextDisabled != Color.Empty)
-                    return _pulsanteVaiTextDisabled;
-                return VisualManager.MetroPasswordBoxVaiButtonTextDisabled;
-            }
-            set { _pulsanteVaiTextDisabled = value; Refresh(); }
-        }
-
-        private Color _pulsanteMostraPasswordBack = Color.Empty;
-        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteMostraPasswordBack
-        {
-            get
-            {
-                if (_pulsanteMostraPasswordBack != Color.Empty)
-                    return _pulsanteMostraPasswordBack;
+                if (_pulsanteSpecialeBack != Color.Empty)
+                    return _pulsanteSpecialeBack;
                 return VisualManager.MetroTextBoxSpecialeButtonBackNormal;
             }
-            set { _pulsanteMostraPasswordBack = value; Refresh(); }
+            set { _pulsanteSpecialeBack = value; Refresh(); }
         }
 
-        private Color _pulsanteMostraPasswordBackHover = Color.Empty;
+        private Color _pulsanteSpecialeBackHover = Color.Empty;
         [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteMostraPasswordBackHover
+        public Color PulsanteSpecialeBackHover
         {
             get
             {
-                if (_pulsanteMostraPasswordBackHover != Color.Empty)
-                    return _pulsanteMostraPasswordBackHover;
+                if (_pulsanteSpecialeBackHover != Color.Empty)
+                    return _pulsanteSpecialeBackHover;
                 return VisualManager.MetroTextBoxSpecialeButtonBackHover;
             }
-            set { _pulsanteMostraPasswordBackHover = value; Refresh(); }
+            set { _pulsanteSpecialeBackHover = value; Refresh(); }
         }
 
-        private Color _pulsanteMostraPasswordBackPressed = Color.Empty;
+        private Color _pulsanteSpecialeBackPressed = Color.Empty;
         [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteMostraPasswordBackPressed
+        public Color PulsanteSpecialeBackPressed
         {
             get
             {
-                if (_pulsanteMostraPasswordBackPressed != Color.Empty)
-                    return _pulsanteMostraPasswordBackPressed;
+                if (_pulsanteSpecialeBackPressed != Color.Empty)
+                    return _pulsanteSpecialeBackPressed;
                 return VisualManager.MetroTextBoxSpecialeButtonBackPressed;
             }
-            set { _pulsanteMostraPasswordBackPressed = value; Refresh(); }
+            set { _pulsanteSpecialeBackPressed = value; Refresh(); }
         }
 
-        private Color _pulsanteMostraPasswordBackDisabled = Color.Empty;
+        private Color _pulsanteSpecialeBackDisabled = Color.Empty;
         [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteMostraPasswordBackDisabled
+        public Color PulsanteSpecialeBackDisabled
         {
             get
             {
-                if (_pulsanteMostraPasswordBackDisabled != Color.Empty)
-                    return _pulsanteMostraPasswordBackDisabled;
+                if (_pulsanteSpecialeBackDisabled != Color.Empty)
+                    return _pulsanteSpecialeBackDisabled;
                 return VisualManager.MetroTextBoxSpecialeButtonBackDisabled;
             }
-            set { _pulsanteMostraPasswordBackDisabled = value; Refresh(); }
+            set { _pulsanteSpecialeBackDisabled = value; Refresh(); }
         }
 
-        private Color _pulsanteMostraPasswordText = Color.Empty;
+        private Color _pulsanteSpecialeText = Color.Empty;
         [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteMostraPasswordText
+        public Color PulsanteSpecialeText
         {
             get
             {
-                if (_pulsanteMostraPasswordText != Color.Empty)
-                    return _pulsanteMostraPasswordText;
+                if (_pulsanteSpecialeText != Color.Empty)
+                    return _pulsanteSpecialeText;
                 return VisualManager.MetroTextBoxSpecialeButtonTextNormal;
             }
-            set { _pulsanteMostraPasswordText = value; Refresh(); }
+            set { _pulsanteSpecialeText = value; Refresh(); }
         }
 
-        private Color _pulsanteMostraPasswordTextHover = Color.Empty;
+        private Color _pulsanteSpecialeTextHover = Color.Empty;
         [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteMostraPasswordTextHover
+        public Color PulsanteSpecialeTextHover
         {
             get
             {
-                if (_pulsanteMostraPasswordTextHover != Color.Empty)
-                    return _pulsanteMostraPasswordTextHover;
+                if (_pulsanteSpecialeTextHover != Color.Empty)
+                    return _pulsanteSpecialeTextHover;
                 return VisualManager.MetroTextBoxSpecialeButtonTextHover;
             }
-            set { _pulsanteMostraPasswordTextHover = value; Refresh(); }
+            set { _pulsanteSpecialeTextHover = value; Refresh(); }
         }
 
-        private Color _pulsanteMostraPasswordTextPressed = Color.Empty;
+        private Color _pulsanteSpecialeTextPressed = Color.Empty;
         [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteMostraPasswordTextPressed
+        public Color PulsanteSpecialeTextPressed
         {
             get
             {
-                if (_pulsanteMostraPasswordTextPressed != Color.Empty)
-                    return _pulsanteMostraPasswordTextPressed;
+                if (_pulsanteSpecialeTextPressed != Color.Empty)
+                    return _pulsanteSpecialeTextPressed;
                 return VisualManager.MetroTextBoxSpecialeButtonTextPressed;
             }
-            set { _pulsanteMostraPasswordTextPressed = value; Refresh(); }
+            set { _pulsanteSpecialeTextPressed = value; Refresh(); }
         }
 
-        private Color _pulsanteMostraPasswordTextDisabled = Color.Empty;
+        private Color _pulsanteSpecialeTextDisabled = Color.Empty;
         [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color PulsanteMostraPasswordTextDisabled
+        public Color PulsanteSpecialeTextDisabled
         {
             get
             {
-                if (_pulsanteMostraPasswordTextDisabled != Color.Empty)
-                    return _pulsanteMostraPasswordTextDisabled;
+                if (_pulsanteSpecialeTextDisabled != Color.Empty)
+                    return _pulsanteSpecialeTextDisabled;
                 return VisualManager.MetroTextBoxSpecialeButtonTextDisabled;
             }
-            set { _pulsanteMostraPasswordTextDisabled = value; Refresh(); }
+            set { _pulsanteSpecialeTextDisabled = value; Refresh(); }
         }
 
         private Font _metroFont = null;
@@ -421,20 +317,20 @@ namespace Metro.Controlli
             set { _metroFont = value; _textBox.Font = value; Refresh(); }
         }
 
-        private int _pulsanteVaiSize = 10;
+        private int _pulsanteSpecialeSize = 10;
         [Category(EtichetteDesigner.Stile)]
-        public int PulsanteVaiSize
+        public int PulsanteSpecialeSize
         {
-            get { return _pulsanteVaiSize; }
-            set { _pulsanteVaiSize = value; Refresh(); }
+            get { return _pulsanteSpecialeSize; }
+            set { _pulsanteSpecialeSize = value; Refresh(); }
         }
 
-        private int _pulsanteMostraPasswordSize = 10;
+        private bool _password = false;
         [Category(EtichetteDesigner.Stile)]
-        public int PulsanteMostraPasswordSize
+        public bool Password
         {
-            get { return _pulsanteMostraPasswordSize; }
-            set { _pulsanteMostraPasswordSize = value; Refresh(); }
+            get { return _password; }
+            set { _textBox.UseSystemPasswordChar = value; _password = value; }
         }
 
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -524,57 +420,54 @@ namespace Metro.Controlli
                 _textBox.Text = value;
             }
         }
-        
-        private bool _hoverPulsanteVai = false;
+
+        private bool _hoverPulsanteSpeciale = false;
         [Browsable(false)]
-        private bool HoverPulsanteVai
+        private bool HoverPulsanteSpeciale
         {
-            get { return _hoverPulsanteVai; }
-            set { _hoverPulsanteVai = value; Refresh(); }
+            get { return _hoverPulsanteSpeciale; }
+            set { _hoverPulsanteSpeciale = value; Refresh(); }
         }
 
-        private bool _pressedPulsanteVai = false;
+        private bool _pressedPulsanteSpeciale = false;
         [Browsable(false)]
-        private bool PressedPulsanteVai
+        private bool PressedPulsanteSpeciale
         {
-            get { return _pressedPulsanteVai; }
-            set { _pressedPulsanteVai = value; Refresh(); }
-        }
-
-        private bool _hoverPulsanteMostraPassword = false;
-        [Browsable(false)]
-        private bool HoverPulsanteMostraPassword
-        {
-            get { return _hoverPulsanteMostraPassword; }
-            set { _hoverPulsanteMostraPassword = value; Refresh(); }
-        }
-
-        private bool _pressedPulsanteMostraPassword = false;
-        [Browsable(false)]
-        private bool PressedPulsanteMostraPassword
-        {
-            get { return _pressedPulsanteMostraPassword; }
-            set { _pressedPulsanteMostraPassword = value; Refresh(); }
+            get { return _pressedPulsanteSpeciale; }
+            set { _pressedPulsanteSpeciale = value; Refresh(); }
         }
 
         private bool _isHover = false;
         private bool _isSelected = false;
 
-        private Rectangle _pulsanteMostraPasswordRect;
-        private Rectangle _pulsanteVaiRect;
-        
+        private Rectangle _pulsanteSpecialeRect;
+
+        private TPulsanteSpeciale _pulsanteSpeciale = TPulsanteSpeciale.Ricerca;
+        [Category(EtichetteDesigner.Stile)]
+        public TPulsanteSpeciale PulsanteSpeciale
+        {
+            get { return _pulsanteSpeciale; }
+            set { _pulsanteSpeciale = value; Refresh(); }
+        }
+
         #endregion
 
         #region Eventi
 
-        public delegate void OnAutenticaEventHandler(object sender, MetroPasswordBoxAutenticaEventArgs e);
-        public event OnAutenticaEventHandler Autentica = null;
+        public delegate void OnPulsanteSpecialeClickEventHandler(object sender, EventArgs e);
+        public event OnPulsanteSpecialeClickEventHandler PulsanteSpecialeClick = null;
+
+        #endregion
+
+        #region Enum
+
+        public enum TPulsanteSpeciale { MostraPassword, Ricerca, Pulisci }
 
         #endregion
 
         private MetroTextBox _textBox = null;
 
-        public MetroPasswordBox()
+        public MetroSpecialTextBox()
             : base()
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor |
@@ -584,7 +477,6 @@ namespace Metro.Controlli
                      ControlStyles.UserPaint, true);
 
             _textBox = new MetroTextBox();
-            _textBox.UseSystemPasswordChar = true;
             _textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
 
             _textBox.MouseLeave += _textBox_MouseLeave;
@@ -648,7 +540,7 @@ namespace Metro.Controlli
         {
             base.OnSizeChanged(e);
             _textBox.Location = new Point(3, 3);
-            _textBox.Size = new Size(Width - 10 - ((Height - 4) * 2), Height - 4);
+            _textBox.Size = new Size(Width - Height - 6, Height - 4);
 
             CalcolaPulsanti();
         }
@@ -665,8 +557,7 @@ namespace Metro.Controlli
             base.OnMouseLeave(e);
 
             _isHover = false;
-            HoverPulsanteMostraPassword = false;
-            HoverPulsanteVai = false;            
+            HoverPulsanteSpeciale = false;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -674,10 +565,8 @@ namespace Metro.Controlli
             Graphics g = e.Graphics;
 
             Color clrBorder = Color.Empty;
-            Color clrPulsanteVai = Color.Empty;
-            Color clrTextPulsanteVai = Color.Empty;
-            Color clrPulsanteMostraPassword = Color.Empty;
-            Color clrTextPulsanteMostraPassword = Color.Empty;
+            Color clrPulsanteSpeciale = Color.Empty;
+            Color clrTextPulsanteSpeciale = Color.Empty;
 
             if (!Enabled)
             {
@@ -686,13 +575,11 @@ namespace Metro.Controlli
                 if (ForeColor != MetroTextDisabled)
                     ForeColor = MetroTextDisabled;
 
-                WinApi.SendMessage(_textBox.Handle, (int)WinApi.Messages.WM_NCPAINT, (int)(IntPtr)1, (int)(IntPtr)0); 
+                WinApi.SendMessage(_textBox.Handle, (int)WinApi.Messages.WM_NCPAINT, (int)(IntPtr)1, (int)(IntPtr)0);
 
                 clrBorder = MetroBorderDisabled;
-                clrPulsanteVai = PulsanteVaiBackDisabled;
-                clrTextPulsanteVai = PulsanteVaiTextDisabled;
-                clrPulsanteMostraPassword = PulsanteMostraPasswordBackDisabled;
-                clrTextPulsanteMostraPassword = PulsanteMostraPasswordTextDisabled;
+                clrPulsanteSpeciale = PulsanteSpecialeBackDisabled;
+                clrTextPulsanteSpeciale = PulsanteSpecialeTextDisabled;
             }
             else if (_isSelected)
             {
@@ -705,36 +592,20 @@ namespace Metro.Controlli
 
                 clrBorder = MetroBorderSelected;
 
-                if (PressedPulsanteVai)
+                if (PressedPulsanteSpeciale)
                 {
-                    clrPulsanteVai = PulsanteVaiBackPressed;
-                    clrTextPulsanteVai = PulsanteVaiTextPressed;
+                    clrPulsanteSpeciale = PulsanteSpecialeBackPressed;
+                    clrTextPulsanteSpeciale = PulsanteSpecialeTextPressed;
                 }
-                else if (HoverPulsanteVai)
+                else if (HoverPulsanteSpeciale)
                 {
-                    clrPulsanteVai = PulsanteVaiBackHover;
-                    clrTextPulsanteVai = PulsanteVaiTextHover;
-                }
-                else
-                {
-                    clrPulsanteVai = PulsanteVaiBack;
-                    clrTextPulsanteVai = PulsanteVaiText;
-                }
-
-                if (PressedPulsanteMostraPassword)
-                {
-                    clrPulsanteMostraPassword = PulsanteMostraPasswordBackPressed;
-                    clrTextPulsanteMostraPassword = PulsanteMostraPasswordTextPressed;
-                }
-                else if (HoverPulsanteMostraPassword)
-                {
-                    clrPulsanteMostraPassword = PulsanteMostraPasswordBackHover;
-                    clrTextPulsanteMostraPassword = PulsanteMostraPasswordTextHover;
+                    clrPulsanteSpeciale = PulsanteSpecialeBackHover;
+                    clrTextPulsanteSpeciale = PulsanteSpecialeTextHover;
                 }
                 else
                 {
-                    clrPulsanteMostraPassword = PulsanteMostraPasswordBack;
-                    clrTextPulsanteMostraPassword = PulsanteMostraPasswordText;
+                    clrPulsanteSpeciale = PulsanteSpecialeBack;
+                    clrTextPulsanteSpeciale = PulsanteSpecialeText;
                 }
             }
             else if (_isHover)
@@ -748,36 +619,20 @@ namespace Metro.Controlli
 
                 clrBorder = MetroBorderHover;
 
-                if (PressedPulsanteVai)
+                if (PressedPulsanteSpeciale)
                 {
-                    clrPulsanteVai = PulsanteVaiBackPressed;
-                    clrTextPulsanteVai = PulsanteVaiTextPressed;
+                    clrPulsanteSpeciale = PulsanteSpecialeBackPressed;
+                    clrTextPulsanteSpeciale = PulsanteSpecialeTextPressed;
                 }
-                else if (HoverPulsanteVai)
+                else if (HoverPulsanteSpeciale)
                 {
-                    clrPulsanteVai = PulsanteVaiBackHover;
-                    clrTextPulsanteVai = PulsanteVaiTextHover;
-                }
-                else
-                {
-                    clrPulsanteVai = PulsanteVaiBack;
-                    clrTextPulsanteVai = PulsanteVaiText;
-                }
-
-                if (PressedPulsanteMostraPassword)
-                {
-                    clrPulsanteMostraPassword = PulsanteMostraPasswordBackPressed;
-                    clrTextPulsanteMostraPassword = PulsanteMostraPasswordTextPressed;
-                }
-                else if (HoverPulsanteMostraPassword)
-                {
-                    clrPulsanteMostraPassword = PulsanteMostraPasswordBackHover;
-                    clrTextPulsanteMostraPassword = PulsanteMostraPasswordTextHover;
+                    clrPulsanteSpeciale = PulsanteSpecialeBackHover;
+                    clrTextPulsanteSpeciale = PulsanteSpecialeTextHover;
                 }
                 else
                 {
-                    clrPulsanteMostraPassword = PulsanteMostraPasswordBack;
-                    clrTextPulsanteMostraPassword = PulsanteMostraPasswordText;
+                    clrPulsanteSpeciale = PulsanteSpecialeBack;
+                    clrTextPulsanteSpeciale = PulsanteSpecialeText;
                 }
             }
             else
@@ -791,49 +646,38 @@ namespace Metro.Controlli
 
                 clrBorder = MetroBorder;
 
-                if (PressedPulsanteVai)
+                if (PressedPulsanteSpeciale)
                 {
-                    clrPulsanteVai = PulsanteVaiBackPressed;
-                    clrTextPulsanteVai = PulsanteVaiTextPressed;
+                    clrPulsanteSpeciale = PulsanteSpecialeBackPressed;
+                    clrTextPulsanteSpeciale = PulsanteSpecialeTextPressed;
                 }
-                else if (HoverPulsanteVai)
+                else if (HoverPulsanteSpeciale)
                 {
-                    clrPulsanteVai = PulsanteVaiBackHover;
-                    clrTextPulsanteVai = PulsanteVaiTextHover;
-                }
-                else
-                {
-                    clrPulsanteVai = PulsanteVaiBack;
-                    clrTextPulsanteVai = PulsanteVaiText;
-                }
-
-                if (PressedPulsanteMostraPassword)
-                {
-                    clrPulsanteMostraPassword = PulsanteMostraPasswordBackPressed;
-                    clrTextPulsanteMostraPassword = PulsanteMostraPasswordTextPressed;
-                }
-                else if (HoverPulsanteMostraPassword)
-                {
-                    clrPulsanteMostraPassword = PulsanteMostraPasswordBackHover;
-                    clrTextPulsanteMostraPassword = PulsanteMostraPasswordTextHover;
+                    clrPulsanteSpeciale = PulsanteSpecialeBackHover;
+                    clrTextPulsanteSpeciale = PulsanteSpecialeTextHover;
                 }
                 else
                 {
-                    clrPulsanteMostraPassword = PulsanteMostraPasswordBack;
-                    clrTextPulsanteMostraPassword = PulsanteMostraPasswordText;
+                    clrPulsanteSpeciale = PulsanteSpecialeBack;
+                    clrTextPulsanteSpeciale = PulsanteSpecialeText;
                 }
             }
-
+            
             g.FillRectangle(new SolidBrush(BackColor), ClientRectangle);
             
-            g.FillRectangle(new SolidBrush(clrPulsanteVai), _pulsanteVaiRect);
-            g.FillRectangle(new SolidBrush(clrPulsanteMostraPassword), _pulsanteMostraPasswordRect);
+            g.FillRectangle(new SolidBrush(clrPulsanteSpeciale), _pulsanteSpecialeRect);
 
-            Font fontVai = new Font(VisualManager.MetroSymbolFont.FontFamily, PulsanteVaiSize);
-            Font fontMostra = new Font(VisualManager.MetroSymbolFont.FontFamily, PulsanteMostraPasswordSize);
+            string pulsante = "";
 
-            TextRenderer.DrawText(g, "\uE111", fontVai, new Rectangle(_pulsanteVaiRect.X + 2, _pulsanteVaiRect.Y, _pulsanteVaiRect.Width - 2, _pulsanteVaiRect.Height), clrTextPulsanteVai, TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter | TextFormatFlags.SingleLine);
-            TextRenderer.DrawText(g, "\uE052", fontMostra, new Rectangle(_pulsanteMostraPasswordRect.X + 2, _pulsanteMostraPasswordRect.Y, _pulsanteMostraPasswordRect.Width - 2, _pulsanteMostraPasswordRect.Height), clrTextPulsanteMostraPassword, TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter | TextFormatFlags.SingleLine);
+            if (PulsanteSpeciale == TPulsanteSpeciale.MostraPassword)
+                pulsante = "\uE052";
+            else if (PulsanteSpeciale == TPulsanteSpeciale.Ricerca)
+                pulsante = "\uE11A";
+            else if (PulsanteSpeciale == TPulsanteSpeciale.Pulisci)
+                pulsante = "\uE10A";
+
+            Font font = new Font(VisualManager.MetroSymbolFont.FontFamily, PulsanteSpecialeSize);
+            TextRenderer.DrawText(g, pulsante, font, new Rectangle(_pulsanteSpecialeRect.X + 2, _pulsanteSpecialeRect.Y, _pulsanteSpecialeRect.Width - 2, _pulsanteSpecialeRect.Height), clrTextPulsanteSpeciale, TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter | TextFormatFlags.SingleLine);
 
             ControlPaint.DrawBorder(g, ClientRectangle, clrBorder, ButtonBorderStyle.Solid);
         }
@@ -857,7 +701,7 @@ namespace Metro.Controlli
 
             _textBox.Parent = null;
             _textBox.Parent = this;
-            
+
             Refresh();
         }
 
@@ -865,18 +709,16 @@ namespace Metro.Controlli
         {
             base.OnMouseMove(e);
 
-            HoverPulsanteVai = _pulsanteVaiRect.Contains(e.Location);
-            HoverPulsanteMostraPassword = _pulsanteMostraPasswordRect.Contains(e.Location);
+            HoverPulsanteSpeciale = _pulsanteSpecialeRect.Contains(e.Location);
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
 
-            PressedPulsanteVai = (_pulsanteVaiRect.Contains(e.Location) && (e.Button == MouseButtons.Left));
-            PressedPulsanteMostraPassword = (_pulsanteMostraPasswordRect.Contains(e.Location) && (e.Button == MouseButtons.Left));
-            
-            if (_pulsanteMostraPasswordRect.Contains(e.Location) && (e.Button == MouseButtons.Left))
+            PressedPulsanteSpeciale = (_pulsanteSpecialeRect.Contains(e.Location) && (e.Button == MouseButtons.Left));
+
+            if (Password && _pulsanteSpecialeRect.Contains(e.Location) && (e.Button == MouseButtons.Left))
                 _textBox.UseSystemPasswordChar = false;
         }
 
@@ -884,30 +726,27 @@ namespace Metro.Controlli
         {
             base.OnMouseUp(e);
 
-            PressedPulsanteVai = !(e.Button == MouseButtons.Left);
-            PressedPulsanteMostraPassword = !(e.Button == MouseButtons.Left);
-            
-            if (e.Button == MouseButtons.Left)
+            PressedPulsanteSpeciale = !(e.Button == MouseButtons.Left);
+
+            if (Password && e.Button == MouseButtons.Left)
                 _textBox.UseSystemPasswordChar = true;
 
-            if (_pulsanteVaiRect.Contains(e.Location) && (e.Button == MouseButtons.Left) && (Autentica != null))
-                Autentica(this, new MetroPasswordBoxAutenticaEventArgs(Text));
+            if (_pulsanteSpecialeRect.Contains(e.Location) && (e.Button == MouseButtons.Left) && (PulsanteSpecialeClick != null))
+                PulsanteSpecialeClick(this, new EventArgs());
+
+            if (_pulsanteSpecialeRect.Contains(e.Location) && (e.Button == MouseButtons.Left))
+                SpecialButtonCliecked();
         }
 
         protected void CalcolaPulsanti()
         {
-            _pulsanteVaiRect = new Rectangle(Width - Height + 4, 4, Height - 8, Height - 8);
-            _pulsanteMostraPasswordRect = new Rectangle(Width - (Height * 2) + 10, 4, Height - 8, Height - 8);
+            _pulsanteSpecialeRect = new Rectangle(Width - Height + 4, 4, Height - 8, Height - 8);
         }
-    }
 
-    public class MetroPasswordBoxAutenticaEventArgs : EventArgs
-    {
-        public string Password { get; set; }
-
-        public MetroPasswordBoxAutenticaEventArgs(string password)
+        protected virtual void SpecialButtonCliecked()
         {
-            Password = password;
+            if (PulsanteSpeciale == TPulsanteSpeciale.Pulisci)
+                Text = string.Empty;
         }
     }
 }

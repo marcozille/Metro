@@ -51,6 +51,19 @@ namespace Metro.Controlli
             set { _metroBorder = value; Refresh(); }
         }
 
+        private Color _metroBorderHover = Color.Empty;
+        [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Color MetroBorderHover
+        {
+            get
+            {
+                if (_metroBorderHover != Color.Empty)
+                    return _metroBorderHover;
+                return VisualManager.MetroTextBoxBorderColorHover;
+            }
+            set { _metroBorderHover = value; Refresh(); }
+        }
+
         private Color _metroBorderSelected = Color.Empty;
         [Category(EtichetteDesigner.Stile), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color MetroBorderSelected
@@ -191,7 +204,7 @@ namespace Metro.Controlli
                     return _metroFont;
                 return VisualManager.MetroTextBoxFont;
             }
-            set { _metroFont = value; Refresh(); }
+            set { _metroFont = value; Font = value; Refresh(); }
         }
 
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -236,15 +249,15 @@ namespace Metro.Controlli
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new char PasswordChar
         {
-            get { return base.PasswordChar;/*(char)0;*/ }
-            set { base.PasswordChar = value;/*(char)0;*/ }
+            get { return base.PasswordChar; }
+            set { base.PasswordChar = value; }
         }
 
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new bool UseSystemPasswordChar
         {
-            get { return base.UseSystemPasswordChar;/*false*/; }
-            set { base.UseSystemPasswordChar = value;/*false*/; }
+            get { return base.UseSystemPasswordChar; }
+            set { base.UseSystemPasswordChar = value; }
         }
 
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
@@ -252,6 +265,24 @@ namespace Metro.Controlli
         {
             get { return base.BorderStyle; }
             set { base.BorderStyle = value; }
+        }
+
+        private string _cueBanner = string.Empty;
+        [Category(EtichetteDesigner.Stile)]
+        public string CueBanner
+        {
+            get { return _cueBanner; }
+            set
+            {
+                if (value != string.Empty && value.Trim() != "")
+                    WinApi.SendMessage(Handle, (int)WinApi.Messages.EM_SETCUEBANNER, true, value);
+                else
+                    WinApi.SendMessage(Handle, (int)WinApi.Messages.EM_SETCUEBANNER, false, "");
+
+                _cueBanner = value;
+
+                WinApi.SendMessage(this.Handle, (int)WinApi.Messages.WM_NCPAINT, (int)(IntPtr)1, (int)(IntPtr)0); 
+            }
         }
 
         private bool _isHover = false;
@@ -361,58 +392,77 @@ namespace Metro.Controlli
             base.WndProc(ref m);
         }
 
+        protected virtual void UpdateColors()
+        {
+            if (Enabled)
+            {
+                if (_isSelected)
+                {
+                    if (BackColor != MetroBackgroundSelected)
+                        BackColor = MetroBackgroundSelected;
+                    if (ForeColor != MetroTextSelected)
+                        ForeColor = MetroTextSelected;
+                }
+                else if (_isHover)
+                {
+                    if (BackColor != MetroBackgroundHover)
+                        BackColor = MetroBackgroundHover;
+                    if (ForeColor != MetroTextHover)
+                        ForeColor = MetroTextHover;
+                }
+                else
+                {
+                    if (BackColor != MetroBackground)
+                        BackColor = MetroBackground;
+                    if (ForeColor != MetroText)
+                        ForeColor = MetroText;
+                }
+            }
+            else
+            {
+                if (BackColor != MetroBackgroundDisabled)
+                    BackColor = MetroBackgroundDisabled;
+                if (ForeColor != MetroTextDisabled)
+                    ForeColor = MetroTextDisabled;
+            }
+        }
+
         protected virtual void OnNCPaint(Graphics g)
         {
-            if (BorderStyle != System.Windows.Forms.BorderStyle.None)
+            UpdateColors();
+
+            if (BorderStyle != System.Windows.Forms.BorderStyle.None && Parent != null)
             {
                 if (Enabled)
                 {
                     if (_isSelected)
                     {
-                        if (BackColor != MetroBackgroundSelected)
-                            BackColor = MetroBackgroundSelected;
-                        if (ForeColor != MetroTextSelected)
-                            ForeColor = MetroTextSelected;
-
                         Rectangle rc1 = new Rectangle(0, 0, Width, Height);
-                        ControlPaint.DrawBorder(g, rc1, Parent.BackColor, ButtonBorderStyle.Solid);
+                        ControlPaint.DrawBorder(g, rc1, MetroBorderSelected, ButtonBorderStyle.Solid);
                         Rectangle rc2 = new Rectangle(1, 1, Width - 2, Height - 2);
-                        ControlPaint.DrawBorder(g, rc2, MetroBorderSelected, ButtonBorderStyle.Solid);
+                        ControlPaint.DrawBorder(g, rc2, MetroBackgroundSelected, ButtonBorderStyle.Solid);
+                    }
+                    else if (_isHover)
+                    {
+                        Rectangle rc1 = new Rectangle(0, 0, Width, Height);
+                        ControlPaint.DrawBorder(g, rc1, MetroBorderHover, ButtonBorderStyle.Solid);
+                        Rectangle rc2 = new Rectangle(1, 1, Width - 2, Height - 2);
+                        ControlPaint.DrawBorder(g, rc2, MetroBackgroundHover, ButtonBorderStyle.Solid);
                     }
                     else
                     {
-                        if (_isHover)
-                        {
-                            if (BackColor != MetroBackgroundHover)
-                                BackColor = MetroBackgroundHover;
-                            if (ForeColor != MetroTextHover)
-                                ForeColor = MetroTextHover;
-                        }
-                        else
-                        {
-                            if (BackColor != MetroBackground)
-                                BackColor = MetroBackground;
-                            if (ForeColor != MetroText)
-                                ForeColor = MetroText;
-                        }
-
                         Rectangle rc1 = new Rectangle(0, 0, Width, Height);
-                        ControlPaint.DrawBorder(g, rc1, Parent.BackColor, ButtonBorderStyle.Solid);
+                        ControlPaint.DrawBorder(g, rc1, MetroBorder, ButtonBorderStyle.Solid);
                         Rectangle rc2 = new Rectangle(1, 1, Width - 2, Height - 2);
-                        ControlPaint.DrawBorder(g, rc2, MetroBorder, ButtonBorderStyle.Solid);
+                        ControlPaint.DrawBorder(g, rc2, MetroBackground, ButtonBorderStyle.Solid);
                     }
                 }
                 else
                 {
-                    if (BackColor != MetroBackgroundDisabled)
-                        BackColor = MetroBackgroundDisabled;
-                    if (ForeColor != MetroTextDisabled)
-                        ForeColor = MetroTextDisabled;
-
                     Rectangle rc1 = new Rectangle(0, 0, Width, Height);
-                    ControlPaint.DrawBorder(g, rc1, Parent.BackColor, ButtonBorderStyle.Solid);
+                    ControlPaint.DrawBorder(g, rc1, MetroBorderDisabled, ButtonBorderStyle.Solid);
                     Rectangle rc2 = new Rectangle(1, 1, Width - 2, Height - 2);
-                    ControlPaint.DrawBorder(g, rc2, MetroBorderDisabled, ButtonBorderStyle.Solid);
+                    ControlPaint.DrawBorder(g, rc2, MetroBackgroundDisabled, ButtonBorderStyle.Solid);
                 }
             }
         }
@@ -421,20 +471,23 @@ namespace Metro.Controlli
         {
             base.OnParentChanged(e);
 
-            if (Parent is IMetroWindow)
+            if (Parent != null)
             {
-                VisualManager = ((IMetroWindow)Parent).VisualManager;
-                StileMetro = ((IMetroWindow)Parent).StileMetro;
-                CombinazioneColori = ((IMetroWindow)Parent).CombinazioneColori;
-            }
-            else if (Parent is IMetroControl)
-            {
-                VisualManager = ((IMetroControl)Parent).VisualManager;
-                StileMetro = ((IMetroControl)Parent).StileMetro;
-                CombinazioneColori = ((IMetroControl)Parent).CombinazioneColori;
-            }
+                if (Parent is IMetroWindow)
+                {
+                    VisualManager = ((IMetroWindow)Parent).VisualManager;
+                    StileMetro = ((IMetroWindow)Parent).StileMetro;
+                    CombinazioneColori = ((IMetroWindow)Parent).CombinazioneColori;
+                }
+                else if (Parent is IMetroControl)
+                {
+                    VisualManager = ((IMetroControl)Parent).VisualManager;
+                    StileMetro = ((IMetroControl)Parent).StileMetro;
+                    CombinazioneColori = ((IMetroControl)Parent).CombinazioneColori;
+                }
 
-            WinApi.SendMessage(this.Handle, (int)WinApi.Messages.WM_NCPAINT, (int)(IntPtr)1, (int)(IntPtr)0); 
+                WinApi.SendMessage(this.Handle, (int)WinApi.Messages.WM_NCPAINT, (int)(IntPtr)1, (int)(IntPtr)0);
+            }
         }
     }
 }

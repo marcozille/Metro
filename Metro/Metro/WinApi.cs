@@ -456,7 +456,9 @@ namespace Metro
             SC_MOVE = 0xF010,
             SC_MINIMIZE = 0XF020,
             SC_MAXIMIZE = 0xF030,
-            SC_RESTORE = 0xF120
+            SC_RESTORE = 0xF120,
+
+            EM_SETCUEBANNER = 0x1501
         }
 
         public enum Bool
@@ -589,6 +591,9 @@ namespace Metro
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
+        public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, bool wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
 
         [return: MarshalAs(UnmanagedType.Bool)]
         [DllImport("user32.dll", SetLastError = true)]

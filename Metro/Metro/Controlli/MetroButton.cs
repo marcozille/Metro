@@ -72,6 +72,7 @@ namespace Metro.Controlli
             {
                 if (_metroBackground != Color.Empty)
                     return _metroBackground;
+
                 return VisualManager.MetroButtonBackgroundNormal;
             }
             set { _metroBackground = value; Refresh(); }

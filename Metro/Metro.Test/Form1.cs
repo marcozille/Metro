@@ -34,7 +34,17 @@ namespace Metro.Test
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
-            MetroMessageBox.Show(metroPasswordBox1.Size.ToString());
+            //MetroMessageBox.Show(metroPasswordBox1.Size.ToString());
+        }
+
+        private void OnAutentica(object sender, Controlli.MetroPasswordBoxAutenticaEventArgs e)
+        {
+            MetroMessageBox.Show(e.Password, "Password inserita");
+        }
+
+        private void metroSpecialTextBox1_PulsanteSpecialeClick(object sender, EventArgs e)
+        {
+            MetroMessageBox.Show("cliccato pulsante di ricerca");
         }
     }
 }
