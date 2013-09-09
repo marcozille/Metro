@@ -13,6 +13,7 @@ using Metro.Designer;
 
 namespace Metro.Controlli
 {
+    [Designer("Metro.Designer.MetroRoundButtonDesigner")]
     [DefaultEvent("Click")]
     public class MetroRoundButton : UserControl, IMetroControl
     {
@@ -351,7 +352,7 @@ namespace Metro.Controlli
 
         protected virtual void DrawImage(Graphics g)
         {
-            Rectangle rc = ClientRectangle;
+            RectangleF rc = new RectangleF();
             int fontSize = 15;
             string immagine = "";
 
@@ -377,23 +378,21 @@ namespace Metro.Controlli
             {
                 case TMetroRoundButtonSize.Piccolo:
                     fontSize = 12;
-                    rc = new Rectangle(6, 7, ClientRectangle.Width - 10, ClientRectangle.Height - 12);
+                    rc = new RectangleF((float)3.8, (float)5.0, (float)ClientRectangle.Width - (float)7.6, (float)ClientRectangle.Height - (float)10.0);
                     break;
                 case TMetroRoundButtonSize.Medio:
                     fontSize = 15;
-                    rc = new Rectangle(6, 7, ClientRectangle.Width - 10, ClientRectangle.Height - 12);
+                    rc = new RectangleF((float)5.1, (float)6.0, (float)ClientRectangle.Width - (float)10.2, (float)ClientRectangle.Height - (float)12.0);
                     break;
                 case TMetroRoundButtonSize.Grande:
-                    fontSize = 20;
-                    rc = new Rectangle(9, 9, ClientRectangle.Width - 17, ClientRectangle.Height - 14);
+                    fontSize = 19;
+                    rc = new RectangleF((float)5.5, (float)7.5, (float)ClientRectangle.Width - (float)11.0, (float)ClientRectangle.Height - (float)15.0);
                     break;
             }
 
             Font font = new Font(VisualManager.MetroSymbolFont.FontFamily, fontSize);
 
             StringFormat stringFormat = new StringFormat();
-            stringFormat.Alignment = StringAlignment.Center;
-            stringFormat.LineAlignment = StringAlignment.Center;
             
             if (!Enabled)
                 g.DrawString(immagine, font, new SolidBrush(MetroImageDisabled), rc, stringFormat);

@@ -68,6 +68,7 @@
     <Compile Include="Controlli\MetroToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Designer\MetroRoundButtonDesigner.cs" />
     <Compile Include="Designer\MetroSpecialTextBoxDesigner.cs" />
     <Compile Include="Designer\EtichetteDesigner.cs" />
     <Compile Include="Designer\MetroPasswordBoxDesigner.cs" />
