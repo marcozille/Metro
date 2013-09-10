@@ -414,7 +414,7 @@ namespace Metro.Controlli
 
         protected virtual void PosizionaPulsante()
         {
-            int larghezza = Height - (int)((float)Height * 0.25) + 1;
+            int larghezza = 17;
             _buttonRectangle = new Rectangle(Width - larghezza, 1, larghezza, Height - 2);
             _textRectangle = new Rectangle(2, 1, Width - larghezza - 5, Height - 2);
         }
