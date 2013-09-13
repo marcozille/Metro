@@ -222,7 +222,7 @@ namespace Metro.Controlli
             g.FillRectangle(new SolidBrush(BackColor), TileRectangle);
 
             DrawIcona(g);
-            DrawDescrizione(g);
+            //DrawDescrizione(g);
 
             if (_isMouseHover)
                 DrawHoverBorder(g);
@@ -254,6 +254,7 @@ namespace Metro.Controlli
             }
             baseGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             baseGraphics.DrawImage(pBmp, 0, 0);
+            DrawDescrizione(baseGraphics);
             #endregion
         }
 
@@ -313,7 +314,7 @@ namespace Metro.Controlli
             if (MostraNumeroTile && NumeroTile > 0)
             {
                 Rectangle rcCompleto = rcIcona;
-                Rectangle rcText = new Rectangle(5, y, 15, rcIcona.Height);
+                Rectangle rcText = new Rectangle(5, y, 19, rcIcona.Height);
 
                 if (NumeroTile.ToString().Length == 2)
                     rcText.Width += 17;

@@ -69,6 +69,7 @@
             this.metroTextBox2 = new Metro.Controlli.MetroTextBox();
             this.metroButton4 = new Metro.Controlli.MetroButton();
             this.metroButton5 = new Metro.Controlli.MetroButton();
+            this.metroRoundButtonText1 = new Metro.Controlli.MetroRoundButtonText();
             this.SuspendLayout();
             // 
             // metroButton1
@@ -153,8 +154,10 @@
             // 
             this.metroRoundButton1.BorderSize = 3;
             this.metroRoundButton1.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Piccolo;
+            this.metroRoundButton1.Hover = false;
             this.metroRoundButton1.Location = new System.Drawing.Point(254, 60);
             this.metroRoundButton1.Name = "metroRoundButton1";
+            this.metroRoundButton1.Pressed = false;
             this.metroRoundButton1.TabIndex = 9;
             this.metroRoundButton1.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Nessuno;
             // 
@@ -162,8 +165,10 @@
             // 
             this.metroRoundButton2.BorderSize = 3;
             this.metroRoundButton2.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Medio;
+            this.metroRoundButton2.Hover = false;
             this.metroRoundButton2.Location = new System.Drawing.Point(291, 51);
             this.metroRoundButton2.Name = "metroRoundButton2";
+            this.metroRoundButton2.Pressed = false;
             this.metroRoundButton2.TabIndex = 10;
             this.metroRoundButton2.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Nessuno;
             // 
@@ -171,8 +176,10 @@
             // 
             this.metroRoundButton3.BorderSize = 3;
             this.metroRoundButton3.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Grande;
+            this.metroRoundButton3.Hover = false;
             this.metroRoundButton3.Location = new System.Drawing.Point(337, 41);
             this.metroRoundButton3.Name = "metroRoundButton3";
+            this.metroRoundButton3.Pressed = false;
             this.metroRoundButton3.TabIndex = 11;
             this.metroRoundButton3.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Nessuno;
             // 
@@ -180,8 +187,10 @@
             // 
             this.metroRoundButton4.BorderSize = 3;
             this.metroRoundButton4.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Grande;
+            this.metroRoundButton4.Hover = false;
             this.metroRoundButton4.Location = new System.Drawing.Point(337, 97);
             this.metroRoundButton4.Name = "metroRoundButton4";
+            this.metroRoundButton4.Pressed = false;
             this.metroRoundButton4.TabIndex = 14;
             this.metroRoundButton4.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Impostazioni;
             // 
@@ -189,8 +198,10 @@
             // 
             this.metroRoundButton5.BorderSize = 3;
             this.metroRoundButton5.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Medio;
+            this.metroRoundButton5.Hover = false;
             this.metroRoundButton5.Location = new System.Drawing.Point(291, 107);
             this.metroRoundButton5.Name = "metroRoundButton5";
+            this.metroRoundButton5.Pressed = false;
             this.metroRoundButton5.TabIndex = 13;
             this.metroRoundButton5.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Impostazioni;
             // 
@@ -198,8 +209,10 @@
             // 
             this.metroRoundButton6.BorderSize = 3;
             this.metroRoundButton6.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Piccolo;
+            this.metroRoundButton6.Hover = false;
             this.metroRoundButton6.Location = new System.Drawing.Point(254, 116);
             this.metroRoundButton6.Name = "metroRoundButton6";
+            this.metroRoundButton6.Pressed = false;
             this.metroRoundButton6.TabIndex = 12;
             this.metroRoundButton6.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Impostazioni;
             // 
@@ -207,8 +220,10 @@
             // 
             this.metroRoundButton7.BorderSize = 3;
             this.metroRoundButton7.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Grande;
+            this.metroRoundButton7.Hover = false;
             this.metroRoundButton7.Location = new System.Drawing.Point(337, 153);
             this.metroRoundButton7.Name = "metroRoundButton7";
+            this.metroRoundButton7.Pressed = false;
             this.metroRoundButton7.TabIndex = 17;
             this.metroRoundButton7.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Pin;
             // 
@@ -216,8 +231,10 @@
             // 
             this.metroRoundButton8.BorderSize = 3;
             this.metroRoundButton8.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Medio;
+            this.metroRoundButton8.Hover = false;
             this.metroRoundButton8.Location = new System.Drawing.Point(291, 163);
             this.metroRoundButton8.Name = "metroRoundButton8";
+            this.metroRoundButton8.Pressed = false;
             this.metroRoundButton8.TabIndex = 16;
             this.metroRoundButton8.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Pin;
             // 
@@ -225,8 +242,10 @@
             // 
             this.metroRoundButton9.BorderSize = 3;
             this.metroRoundButton9.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Piccolo;
+            this.metroRoundButton9.Hover = false;
             this.metroRoundButton9.Location = new System.Drawing.Point(254, 172);
             this.metroRoundButton9.Name = "metroRoundButton9";
+            this.metroRoundButton9.Pressed = false;
             this.metroRoundButton9.TabIndex = 15;
             this.metroRoundButton9.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Pin;
             // 
@@ -234,8 +253,10 @@
             // 
             this.metroRoundButton10.BorderSize = 3;
             this.metroRoundButton10.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Grande;
+            this.metroRoundButton10.Hover = false;
             this.metroRoundButton10.Location = new System.Drawing.Point(480, 41);
             this.metroRoundButton10.Name = "metroRoundButton10";
+            this.metroRoundButton10.Pressed = false;
             this.metroRoundButton10.TabIndex = 20;
             this.metroRoundButton10.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Unpin;
             // 
@@ -243,8 +264,10 @@
             // 
             this.metroRoundButton11.BorderSize = 3;
             this.metroRoundButton11.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Medio;
+            this.metroRoundButton11.Hover = false;
             this.metroRoundButton11.Location = new System.Drawing.Point(434, 51);
             this.metroRoundButton11.Name = "metroRoundButton11";
+            this.metroRoundButton11.Pressed = false;
             this.metroRoundButton11.TabIndex = 19;
             this.metroRoundButton11.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Unpin;
             // 
@@ -252,8 +275,10 @@
             // 
             this.metroRoundButton12.BorderSize = 3;
             this.metroRoundButton12.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Piccolo;
+            this.metroRoundButton12.Hover = false;
             this.metroRoundButton12.Location = new System.Drawing.Point(397, 60);
             this.metroRoundButton12.Name = "metroRoundButton12";
+            this.metroRoundButton12.Pressed = false;
             this.metroRoundButton12.TabIndex = 18;
             this.metroRoundButton12.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Unpin;
             // 
@@ -261,8 +286,10 @@
             // 
             this.metroRoundButton13.BorderSize = 3;
             this.metroRoundButton13.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Grande;
+            this.metroRoundButton13.Hover = false;
             this.metroRoundButton13.Location = new System.Drawing.Point(480, 97);
             this.metroRoundButton13.Name = "metroRoundButton13";
+            this.metroRoundButton13.Pressed = false;
             this.metroRoundButton13.TabIndex = 23;
             this.metroRoundButton13.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Aggiungi;
             // 
@@ -270,8 +297,10 @@
             // 
             this.metroRoundButton14.BorderSize = 3;
             this.metroRoundButton14.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Medio;
+            this.metroRoundButton14.Hover = false;
             this.metroRoundButton14.Location = new System.Drawing.Point(434, 107);
             this.metroRoundButton14.Name = "metroRoundButton14";
+            this.metroRoundButton14.Pressed = false;
             this.metroRoundButton14.TabIndex = 22;
             this.metroRoundButton14.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Aggiungi;
             // 
@@ -279,8 +308,10 @@
             // 
             this.metroRoundButton15.BorderSize = 3;
             this.metroRoundButton15.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Piccolo;
+            this.metroRoundButton15.Hover = false;
             this.metroRoundButton15.Location = new System.Drawing.Point(397, 116);
             this.metroRoundButton15.Name = "metroRoundButton15";
+            this.metroRoundButton15.Pressed = false;
             this.metroRoundButton15.TabIndex = 21;
             this.metroRoundButton15.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Aggiungi;
             // 
@@ -288,8 +319,10 @@
             // 
             this.metroRoundButton16.BorderSize = 3;
             this.metroRoundButton16.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Grande;
+            this.metroRoundButton16.Hover = false;
             this.metroRoundButton16.Location = new System.Drawing.Point(480, 153);
             this.metroRoundButton16.Name = "metroRoundButton16";
+            this.metroRoundButton16.Pressed = false;
             this.metroRoundButton16.TabIndex = 26;
             this.metroRoundButton16.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Rimuovi;
             // 
@@ -297,8 +330,10 @@
             // 
             this.metroRoundButton17.BorderSize = 3;
             this.metroRoundButton17.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Medio;
+            this.metroRoundButton17.Hover = false;
             this.metroRoundButton17.Location = new System.Drawing.Point(434, 163);
             this.metroRoundButton17.Name = "metroRoundButton17";
+            this.metroRoundButton17.Pressed = false;
             this.metroRoundButton17.TabIndex = 25;
             this.metroRoundButton17.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Rimuovi;
             // 
@@ -306,8 +341,10 @@
             // 
             this.metroRoundButton18.BorderSize = 3;
             this.metroRoundButton18.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Piccolo;
+            this.metroRoundButton18.Hover = false;
             this.metroRoundButton18.Location = new System.Drawing.Point(397, 172);
             this.metroRoundButton18.Name = "metroRoundButton18";
+            this.metroRoundButton18.Pressed = false;
             this.metroRoundButton18.TabIndex = 24;
             this.metroRoundButton18.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Rimuovi;
             // 
@@ -315,8 +352,10 @@
             // 
             this.metroRoundButton28.BorderSize = 3;
             this.metroRoundButton28.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Grande;
+            this.metroRoundButton28.Hover = false;
             this.metroRoundButton28.Location = new System.Drawing.Point(620, 153);
             this.metroRoundButton28.Name = "metroRoundButton28";
+            this.metroRoundButton28.Pressed = false;
             this.metroRoundButton28.TabIndex = 35;
             this.metroRoundButton28.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Cestino;
             // 
@@ -324,8 +363,10 @@
             // 
             this.metroRoundButton29.BorderSize = 3;
             this.metroRoundButton29.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Medio;
+            this.metroRoundButton29.Hover = false;
             this.metroRoundButton29.Location = new System.Drawing.Point(574, 163);
             this.metroRoundButton29.Name = "metroRoundButton29";
+            this.metroRoundButton29.Pressed = false;
             this.metroRoundButton29.TabIndex = 34;
             this.metroRoundButton29.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Cestino;
             // 
@@ -333,8 +374,10 @@
             // 
             this.metroRoundButton30.BorderSize = 3;
             this.metroRoundButton30.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Piccolo;
+            this.metroRoundButton30.Hover = false;
             this.metroRoundButton30.Location = new System.Drawing.Point(537, 172);
             this.metroRoundButton30.Name = "metroRoundButton30";
+            this.metroRoundButton30.Pressed = false;
             this.metroRoundButton30.TabIndex = 33;
             this.metroRoundButton30.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Cestino;
             // 
@@ -342,8 +385,10 @@
             // 
             this.metroRoundButton31.BorderSize = 3;
             this.metroRoundButton31.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Grande;
+            this.metroRoundButton31.Hover = false;
             this.metroRoundButton31.Location = new System.Drawing.Point(620, 97);
             this.metroRoundButton31.Name = "metroRoundButton31";
+            this.metroRoundButton31.Pressed = false;
             this.metroRoundButton31.TabIndex = 32;
             this.metroRoundButton31.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Indietro;
             // 
@@ -351,8 +396,10 @@
             // 
             this.metroRoundButton32.BorderSize = 3;
             this.metroRoundButton32.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Medio;
+            this.metroRoundButton32.Hover = false;
             this.metroRoundButton32.Location = new System.Drawing.Point(574, 107);
             this.metroRoundButton32.Name = "metroRoundButton32";
+            this.metroRoundButton32.Pressed = false;
             this.metroRoundButton32.TabIndex = 31;
             this.metroRoundButton32.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Indietro;
             // 
@@ -360,8 +407,10 @@
             // 
             this.metroRoundButton33.BorderSize = 3;
             this.metroRoundButton33.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Piccolo;
+            this.metroRoundButton33.Hover = false;
             this.metroRoundButton33.Location = new System.Drawing.Point(537, 116);
             this.metroRoundButton33.Name = "metroRoundButton33";
+            this.metroRoundButton33.Pressed = false;
             this.metroRoundButton33.TabIndex = 30;
             this.metroRoundButton33.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Indietro;
             // 
@@ -369,8 +418,10 @@
             // 
             this.metroRoundButton34.BorderSize = 3;
             this.metroRoundButton34.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Grande;
+            this.metroRoundButton34.Hover = false;
             this.metroRoundButton34.Location = new System.Drawing.Point(620, 41);
             this.metroRoundButton34.Name = "metroRoundButton34";
+            this.metroRoundButton34.Pressed = false;
             this.metroRoundButton34.TabIndex = 29;
             this.metroRoundButton34.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Avanti;
             // 
@@ -378,8 +429,10 @@
             // 
             this.metroRoundButton35.BorderSize = 3;
             this.metroRoundButton35.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Medio;
+            this.metroRoundButton35.Hover = false;
             this.metroRoundButton35.Location = new System.Drawing.Point(574, 51);
             this.metroRoundButton35.Name = "metroRoundButton35";
+            this.metroRoundButton35.Pressed = false;
             this.metroRoundButton35.TabIndex = 28;
             this.metroRoundButton35.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Avanti;
             // 
@@ -387,8 +440,10 @@
             // 
             this.metroRoundButton36.BorderSize = 3;
             this.metroRoundButton36.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Piccolo;
+            this.metroRoundButton36.Hover = false;
             this.metroRoundButton36.Location = new System.Drawing.Point(537, 60);
             this.metroRoundButton36.Name = "metroRoundButton36";
+            this.metroRoundButton36.Pressed = false;
             this.metroRoundButton36.TabIndex = 27;
             this.metroRoundButton36.TipoPulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonType.Avanti;
             // 
@@ -410,10 +465,10 @@
             this.metroTile1.ActiveControl = null;
             this.metroTile1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(166)))), ((int)(((byte)(234)))));
             this.metroTile1.CanAnimate = false;
-            this.metroTile1.Descrizione = "Prima tile";
+            this.metroTile1.Descrizione = "Messaggi";
             this.metroTile1.Dimensione = Metro.Controlli.MetroTile.MetroTileSize.Media;
             this.metroTile1.Icona = global::Metro.Test.Properties.Resources.test;
-            this.metroTile1.Location = new System.Drawing.Point(13, 256);
+            this.metroTile1.Location = new System.Drawing.Point(13, 290);
             this.metroTile1.MostraNumeroTile = true;
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.NumeroTile = 0;
@@ -427,10 +482,10 @@
             this.metroTile2.ActiveControl = null;
             this.metroTile2.BackColor = System.Drawing.Color.Red;
             this.metroTile2.CanAnimate = false;
-            this.metroTile2.Descrizione = "E qui abbiamo la seconda tile";
+            this.metroTile2.Descrizione = "Messaggi";
             this.metroTile2.Dimensione = Metro.Controlli.MetroTile.MetroTileSize.Grande;
             this.metroTile2.Icona = global::Metro.Test.Properties.Resources.test;
-            this.metroTile2.Location = new System.Drawing.Point(139, 256);
+            this.metroTile2.Location = new System.Drawing.Point(139, 290);
             this.metroTile2.MostraNumeroTile = true;
             this.metroTile2.Name = "metroTile2";
             this.metroTile2.NumeroTile = 0;
@@ -441,7 +496,7 @@
             // 
             // metroButton2
             // 
-            this.metroButton2.Location = new System.Drawing.Point(385, 256);
+            this.metroButton2.Location = new System.Drawing.Point(385, 290);
             this.metroButton2.MetroFont = new System.Drawing.Font("Segoe UI", 10F);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(145, 23);
@@ -452,7 +507,7 @@
             // 
             // metroButton3
             // 
-            this.metroButton3.Location = new System.Drawing.Point(385, 285);
+            this.metroButton3.Location = new System.Drawing.Point(385, 319);
             this.metroButton3.MetroFont = new System.Drawing.Font("Segoe UI", 10F);
             this.metroButton3.Name = "metroButton3";
             this.metroButton3.Size = new System.Drawing.Size(145, 23);
@@ -467,7 +522,7 @@
             this.metroTextBox2.CueBanner = "";
             this.metroTextBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.metroTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.metroTextBox2.Location = new System.Drawing.Point(385, 314);
+            this.metroTextBox2.Location = new System.Drawing.Point(385, 348);
             this.metroTextBox2.MetroFont = new System.Drawing.Font("Segoe UI", 10F);
             this.metroTextBox2.Name = "metroTextBox2";
             this.metroTextBox2.Size = new System.Drawing.Size(43, 25);
@@ -475,7 +530,7 @@
             // 
             // metroButton4
             // 
-            this.metroButton4.Location = new System.Drawing.Point(434, 315);
+            this.metroButton4.Location = new System.Drawing.Point(434, 349);
             this.metroButton4.MetroFont = new System.Drawing.Font("Segoe UI", 10F);
             this.metroButton4.Name = "metroButton4";
             this.metroButton4.Size = new System.Drawing.Size(96, 23);
@@ -486,7 +541,7 @@
             // 
             // metroButton5
             // 
-            this.metroButton5.Location = new System.Drawing.Point(434, 345);
+            this.metroButton5.Location = new System.Drawing.Point(434, 379);
             this.metroButton5.MetroFont = new System.Drawing.Font("Segoe UI", 10F);
             this.metroButton5.Name = "metroButton5";
             this.metroButton5.Size = new System.Drawing.Size(96, 23);
@@ -495,11 +550,27 @@
             this.metroButton5.UseVisualStyleBackColor = true;
             this.metroButton5.Click += new System.EventHandler(this.metroButton5_Click);
             // 
+            // metroRoundButtonText1
+            // 
+            this.metroRoundButtonText1.ButtonDisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.metroRoundButtonText1.ButtonHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.metroRoundButtonText1.ButtonNormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.metroRoundButtonText1.ButtonPressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(166)))), ((int)(((byte)(234)))));
+            this.metroRoundButtonText1.DimensionePulsante = Metro.Controlli.MetroRoundButton.TMetroRoundButtonSize.Grande;
+            this.metroRoundButtonText1.Location = new System.Drawing.Point(620, 209);
+            this.metroRoundButtonText1.Name = "metroRoundButtonText1";
+            this.metroRoundButtonText1.Size = new System.Drawing.Size(50, 70);
+            this.metroRoundButtonText1.TabIndex = 44;
+            this.metroRoundButtonText1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.metroRoundButtonText1.TextColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.metroRoundButtonText1.TextColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 444);
+            this.Controls.Add(this.metroRoundButtonText1);
             this.Controls.Add(this.metroButton5);
             this.Controls.Add(this.metroButton4);
             this.Controls.Add(this.metroTextBox2);
@@ -592,6 +663,7 @@
         private Controlli.MetroTextBox metroTextBox2;
         private Controlli.MetroButton metroButton4;
         private Controlli.MetroButton metroButton5;
+        private Controlli.MetroRoundButtonText metroRoundButtonText1;
 
 
 

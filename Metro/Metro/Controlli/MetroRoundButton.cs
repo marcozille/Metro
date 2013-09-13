@@ -15,7 +15,7 @@ namespace Metro.Controlli
 {
     [Designer("Metro.Designer.MetroRoundButtonDesigner")]
     [DefaultEvent("Click")]
-    public class MetroRoundButton : UserControl, IMetroControl
+    public class MetroRoundButton : Button, IMetroControl
     {
         #region Proprietà
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Category(EtichetteDesigner.Stile)]
@@ -220,14 +220,7 @@ namespace Metro.Controlli
             set 
             { 
                 _dimesionePulsante = value;
-
-                switch (value)
-                {
-                    case TMetroRoundButtonSize.Piccolo: Size = new Size(31, 31); break;
-                    case TMetroRoundButtonSize.Medio: Size = new Size(40, 40); break;
-                    case TMetroRoundButtonSize.Grande: Size = new Size(50, 50); break;
-                }
-
+                CalcolaDimensione();
                 Refresh(); 
             }
         }
@@ -238,7 +231,7 @@ namespace Metro.Controlli
             get { return base.Size; }
             set { base.Size = value; }
         }
-
+        
         #endregion
 
         #region Enums
@@ -251,6 +244,9 @@ namespace Metro.Controlli
         private bool _isHover = false;
         private bool _isPressed = false;
 
+        public bool Hover { get { return _isHover; } set { _isHover = value; } }
+        public bool Pressed { get { return _isPressed; } set { _isPressed = value; } }
+
         public MetroRoundButton()
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor |
@@ -259,6 +255,16 @@ namespace Metro.Controlli
                      ControlStyles.UserPaint, true);
 
             DimensionePulsante = TMetroRoundButtonSize.Medio;
+        }
+
+        protected virtual void CalcolaDimensione()
+        {
+            switch (DimensionePulsante)
+            {
+                case TMetroRoundButtonSize.Piccolo: Size = new Size(31, 31); break;
+                case TMetroRoundButtonSize.Medio: Size = new Size(40, 40); break;
+                case TMetroRoundButtonSize.Grande: Size = new Size(50, 50); break;
+            }
         }
 
         protected override void OnMouseEnter(EventArgs e)
@@ -318,7 +324,7 @@ namespace Metro.Controlli
 
         protected virtual void DrawBackground(Graphics g)
         {
-            Rectangle rc = new Rectangle(2, 2, ClientRectangle.Width - 4, ClientRectangle.Height - 4);
+            Rectangle rc = new Rectangle(2, 2, ClientRectangle.Width - 4, ClientRectangle.Width - 4);
 
             if (!Enabled)
                 g.FillEllipse(new SolidBrush(MetroBackgroundDisabled), rc);
@@ -335,7 +341,7 @@ namespace Metro.Controlli
 
         protected virtual void DrawBorder(Graphics g)
         {
-            Rectangle rc = new Rectangle(2, 2, ClientRectangle.Width - 4, ClientRectangle.Height - 4);
+            Rectangle rc = new Rectangle(2, 2, ClientRectangle.Width - 4, ClientRectangle.Width - 4);
 
             if (!Enabled)
                 g.DrawEllipse(new Pen(MetroBorderDisabled, BorderSize), rc);
@@ -378,15 +384,15 @@ namespace Metro.Controlli
             {
                 case TMetroRoundButtonSize.Piccolo:
                     fontSize = 12;
-                    rc = new RectangleF((float)3.8, (float)5.0, (float)ClientRectangle.Width - (float)7.6, (float)ClientRectangle.Height - (float)10.0);
+                    rc = new RectangleF((float)3.8, (float)5.0, (float)ClientRectangle.Width - (float)7.6, (float)ClientRectangle.Width - (float)10.0);
                     break;
                 case TMetroRoundButtonSize.Medio:
                     fontSize = 15;
-                    rc = new RectangleF((float)5.1, (float)6.0, (float)ClientRectangle.Width - (float)10.2, (float)ClientRectangle.Height - (float)12.0);
+                    rc = new RectangleF((float)5.1, (float)6.0, (float)ClientRectangle.Width - (float)10.2, (float)ClientRectangle.Width - (float)12.0);
                     break;
                 case TMetroRoundButtonSize.Grande:
                     fontSize = 19;
-                    rc = new RectangleF((float)5.5, (float)7.5, (float)ClientRectangle.Width - (float)11.0, (float)ClientRectangle.Height - (float)15.0);
+                    rc = new RectangleF((float)5.5, (float)7.5, (float)ClientRectangle.Width - (float)11.0, (float)ClientRectangle.Width - (float)15.0);
                     break;
             }
 
@@ -415,6 +421,9 @@ namespace Metro.Controlli
         protected override void OnParentChanged(EventArgs e)
         {
             base.OnParentChanged(e);
+
+            if (Parent == null)
+                return;
 
             if (Parent is IMetroWindow)
             {

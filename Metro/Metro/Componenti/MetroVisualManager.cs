@@ -306,6 +306,9 @@ namespace Metro.Componenti
         public Color MetroRoundButtonImageHover { get; set; }
         public Color MetroRoundButtonImagePressed { get; set; }
         public Color MetroRoundButtonImageDisabled { get; set; }
+        public Color MetroRoundButtonTextNormal { get; set; }
+        public Color MetroRoundButtonTextHover { get; set; }
+        public Color MetroRoundButtonTextDisabled { get; set; }
         #endregion
         #region ComboBox
         public Color MetroComboBoxBorderNormal { get; set; }
@@ -479,7 +482,10 @@ namespace Metro.Componenti
                 MetroRoundButtonCircleDisabled = Color.FromArgb(80, 80, 80);  
                 MetroRoundButtonImageNormal = Color.FromArgb(80, 80, 80);
                 MetroRoundButtonImageHover = Color.FromArgb(150, 150, 150);
-                MetroRoundButtonImageDisabled = Color.FromArgb(80, 80, 80);  
+                MetroRoundButtonImageDisabled = Color.FromArgb(80, 80, 80);
+                MetroRoundButtonTextNormal = Color.FromArgb(80, 80, 80);
+                MetroRoundButtonTextHover = Color.FromArgb(150, 150, 150);
+                MetroRoundButtonTextDisabled = Color.FromArgb(80, 80, 80);
                 #endregion
                 #endregion
                 #region ComboBox
