@@ -64,6 +64,11 @@
             this.metroComboBox1 = new Metro.Controlli.MetroComboBox();
             this.metroTile1 = new Metro.Controlli.MetroTile();
             this.metroTile2 = new Metro.Controlli.MetroTile();
+            this.metroButton2 = new Metro.Controlli.MetroButton();
+            this.metroButton3 = new Metro.Controlli.MetroButton();
+            this.metroTextBox2 = new Metro.Controlli.MetroTextBox();
+            this.metroButton4 = new Metro.Controlli.MetroButton();
+            this.metroButton5 = new Metro.Controlli.MetroButton();
             this.SuspendLayout();
             // 
             // metroButton1
@@ -407,34 +412,99 @@
             this.metroTile1.CanAnimate = false;
             this.metroTile1.Descrizione = "Prima tile";
             this.metroTile1.Dimensione = Metro.Controlli.MetroTile.MetroTileSize.Media;
+            this.metroTile1.Icona = global::Metro.Test.Properties.Resources.test;
             this.metroTile1.Location = new System.Drawing.Point(13, 256);
-            this.metroTile1.MostraNumeroTile = false;
+            this.metroTile1.MostraNumeroTile = true;
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.NumeroTile = 0;
-            this.metroTile1.Size = new System.Drawing.Size(100, 100);
+            this.metroTile1.Size = new System.Drawing.Size(120, 120);
             this.metroTile1.TabIndex = 37;
             this.metroTile1.Text = "metroTile1";
+            this.metroTile1.TileColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(166)))), ((int)(((byte)(234)))));
             // 
             // metroTile2
             // 
             this.metroTile2.ActiveControl = null;
-            this.metroTile2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(166)))), ((int)(((byte)(234)))));
+            this.metroTile2.BackColor = System.Drawing.Color.Red;
             this.metroTile2.CanAnimate = false;
-            this.metroTile2.Descrizione = "Seconda tile vediamo se di qua f";
+            this.metroTile2.Descrizione = "E qui abbiamo la seconda tile";
             this.metroTile2.Dimensione = Metro.Controlli.MetroTile.MetroTileSize.Grande;
-            this.metroTile2.Location = new System.Drawing.Point(119, 256);
-            this.metroTile2.MostraNumeroTile = false;
+            this.metroTile2.Icona = global::Metro.Test.Properties.Resources.test;
+            this.metroTile2.Location = new System.Drawing.Point(139, 256);
+            this.metroTile2.MostraNumeroTile = true;
             this.metroTile2.Name = "metroTile2";
             this.metroTile2.NumeroTile = 0;
-            this.metroTile2.Size = new System.Drawing.Size(200, 100);
+            this.metroTile2.Size = new System.Drawing.Size(240, 120);
             this.metroTile2.TabIndex = 38;
             this.metroTile2.Text = "metroTile2";
+            this.metroTile2.TileColor = System.Drawing.Color.Red;
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.Location = new System.Drawing.Point(385, 256);
+            this.metroButton2.MetroFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(145, 23);
+            this.metroButton2.TabIndex = 39;
+            this.metroButton2.Text = "Incrementa prima";
+            this.metroButton2.UseVisualStyleBackColor = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click_1);
+            // 
+            // metroButton3
+            // 
+            this.metroButton3.Location = new System.Drawing.Point(385, 285);
+            this.metroButton3.MetroFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.metroButton3.Name = "metroButton3";
+            this.metroButton3.Size = new System.Drawing.Size(145, 23);
+            this.metroButton3.TabIndex = 40;
+            this.metroButton3.Text = "Incrementa seconda";
+            this.metroButton3.UseVisualStyleBackColor = true;
+            this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click_1);
+            // 
+            // metroTextBox2
+            // 
+            this.metroTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.metroTextBox2.CueBanner = "";
+            this.metroTextBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.metroTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.metroTextBox2.Location = new System.Drawing.Point(385, 314);
+            this.metroTextBox2.MetroFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.metroTextBox2.Name = "metroTextBox2";
+            this.metroTextBox2.Size = new System.Drawing.Size(43, 25);
+            this.metroTextBox2.TabIndex = 41;
+            // 
+            // metroButton4
+            // 
+            this.metroButton4.Location = new System.Drawing.Point(434, 315);
+            this.metroButton4.MetroFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.metroButton4.Name = "metroButton4";
+            this.metroButton4.Size = new System.Drawing.Size(96, 23);
+            this.metroButton4.TabIndex = 42;
+            this.metroButton4.Text = "Set prima";
+            this.metroButton4.UseVisualStyleBackColor = true;
+            this.metroButton4.Click += new System.EventHandler(this.metroButton4_Click);
+            // 
+            // metroButton5
+            // 
+            this.metroButton5.Location = new System.Drawing.Point(434, 345);
+            this.metroButton5.MetroFont = new System.Drawing.Font("Segoe UI", 10F);
+            this.metroButton5.Name = "metroButton5";
+            this.metroButton5.Size = new System.Drawing.Size(96, 23);
+            this.metroButton5.TabIndex = 43;
+            this.metroButton5.Text = "Set seconda";
+            this.metroButton5.UseVisualStyleBackColor = true;
+            this.metroButton5.Click += new System.EventHandler(this.metroButton5_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 444);
+            this.Controls.Add(this.metroButton5);
+            this.Controls.Add(this.metroButton4);
+            this.Controls.Add(this.metroTextBox2);
+            this.Controls.Add(this.metroButton3);
+            this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.metroComboBox1);
@@ -517,6 +587,11 @@
         private Controlli.MetroComboBox metroComboBox1;
         private Controlli.MetroTile metroTile1;
         private Controlli.MetroTile metroTile2;
+        private Controlli.MetroButton metroButton2;
+        private Controlli.MetroButton metroButton3;
+        private Controlli.MetroTextBox metroTextBox2;
+        private Controlli.MetroButton metroButton4;
+        private Controlli.MetroButton metroButton5;
 
 
 

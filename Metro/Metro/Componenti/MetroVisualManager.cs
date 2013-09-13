@@ -199,7 +199,7 @@ namespace Metro.Componenti
             MetroComboBoxFont = new Font(MetroGlobals.FontCollection.Families[0], 10f);
             MetroWindowTitleFont = new Font(MetroGlobals.FontCollection.Families[0], 12.5f);
             MetroTileTextFont = new Font(MetroGlobals.FontCollection.Families[0], 9f);
-            MetroTileNumberFont = new Font(MetroGlobals.FontCollection.Families[0], 16f);
+            MetroTileNumberFont = new Font(MetroGlobals.FontCollection.Families[0], 20f);
             MetroSymbolFont = new Font(MetroGlobals.FontCollection.Families[1], 10f);
         }
 
@@ -512,7 +512,7 @@ namespace Metro.Componenti
                 MetroComboBoxPromptTextDisabled = Color.FromArgb(100, 100, 100);
                 #endregion
                 #region Tile
-                MetroTileHoverBorderColor = Color.FromArgb(200, 80, 80, 80);
+                MetroTileHoverBorderColor = Color.FromArgb(150, 140, 140, 140);
                 #endregion
             }
 

@@ -47,6 +47,19 @@ namespace Metro.Controlli
             set { _visualManager = value; Refresh(); }
         }
 
+        private Color _tileColor = Color.Empty;
+        [Category(EtichetteDesigner.Stile)]
+        public Color TileColor
+        {
+            get 
+            {
+                if (_tileColor != Color.Empty)
+                    return _tileColor;
+                return VisualManager.MetroTileBackColor; 
+            }
+            set { _tileColor = value; Refresh(); }
+        }
+
         private Control activeControl = null;
         [Browsable(false)]
         public Control ActiveControl
@@ -71,7 +84,13 @@ namespace Metro.Controlli
         public int NumeroTile
         {
             get { return _numeroTile; }
-            set { _numeroTile = value; Refresh(); }
+            set 
+            {
+                if (value > 999)
+                    throw new ArgumentOutOfRangeException("Il valore massimo del numero per le tile è 999");
+                _numeroTile = value; 
+                Refresh(); 
+            }
         }
 
         [Browsable(false)]
@@ -129,8 +148,26 @@ namespace Metro.Controlli
             get
             {
                 Rectangle rc = ClientRectangle;
-                rc.Inflate(-2, -2);
+                rc.Inflate(-3, -3);
                 return rc;
+            }
+        }
+        
+        private Image _icona = null;
+        [Category(EtichetteDesigner.Stile)]
+        public Image Icona
+        {
+            get { return _icona; }
+            set 
+            {
+                if (value != null)
+                {
+                    if (value.Height > 48 || value.Width > 48)
+                        throw new Exception("L'immagine può essere al massimo 48x48px");
+                }
+
+                _icona = value; 
+                Refresh(); 
             }
         }
 
@@ -141,8 +178,7 @@ namespace Metro.Controlli
             get { return _descrizione; }
             set { _descrizione = value; Refresh(); }
         }
-
-
+        
         private bool _isMouseHover = false;
         private bool _isMousePressed = false;
         private bool _isSelected = false;
@@ -164,6 +200,9 @@ namespace Metro.Controlli
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            if (BackColor != TileColor)
+                BackColor = TileColor;
+
             e.Graphics.Clear(Parent.BackColor);
 
             if (_isMousePressed)
@@ -179,78 +218,42 @@ namespace Metro.Controlli
             Graphics g = Graphics.FromImage(image);
 
             g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            //g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            //g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
 
             g.FillRectangle(new SolidBrush(BackColor), TileRectangle);
 
+            DrawIcona(g);
             DrawDescrizione(g);
 
             if (_isMouseHover)
                 DrawHoverBorder(g);
 
+            if (_isSelected)
+                DrawSelectionBorder(g);
+
             #region Prospettiva
             Bitmap pBmp = null;
 
             MetroTileClickPosition pos = GetPosizioneClick();
-            int[] drawingPos = new int[2];
-            PointF[] puntiRett = new PointF[4];
 
             switch (pos)
             {
                 case MetroTileClickPosition.Alto:
-                    pBmp = Perspective.ImmagineProspettiva.PerspectiveMode2(image, Perspective.PerspectiveModus.HorizontalUpMode2, ClientRectangle.Width - 6, true, true, 0, 0);
-                    puntiRett[0] = new PointF(3, 5);
-                    puntiRett[1] = new PointF(ClientRectangle.Width - 3, 5);
-                    puntiRett[2] = new PointF(ClientRectangle.Width, ClientRectangle.Height);
-                    puntiRett[3] = new PointF(0, ClientRectangle.Height);
-                    drawingPos[0] = 0;
-                    drawingPos[1] = 5;
+                    pBmp = Perspective.ImmagineProspettiva.PerspectiveMode2(image, Perspective.PerspectiveModus.VerticalUpMode2, ClientRectangle.Width - 6, true, true, 0, 0);
                     break;
                 case MetroTileClickPosition.Destra:
-                    pBmp = Perspective.ImmagineProspettiva.PerspectiveMode2(image, Perspective.PerspectiveModus.VerticalDownMode2, ClientRectangle.Height - 6, true, true, 0, 0);
-                    puntiRett[0] = new PointF(0, 0);
-                    puntiRett[1] = new PointF(ClientRectangle.Width - 5, 3);
-                    puntiRett[2] = new PointF(ClientRectangle.Width - 5, ClientRectangle.Height - 3);
-                    puntiRett[3] = new PointF(0, ClientRectangle.Height);
-                    drawingPos[0] = 0;
-                    drawingPos[1] = 0;
+                    pBmp = Perspective.ImmagineProspettiva.PerspectiveMode2(image, Perspective.PerspectiveModus.HorizontalDownMode2, ClientRectangle.Height - 6, true, true, 0, 0);
                     break;
                 case MetroTileClickPosition.Basso:
-                    pBmp = Perspective.ImmagineProspettiva.PerspectiveMode2(image, Perspective.PerspectiveModus.HorizontalDownMode2, ClientRectangle.Width - 6, true, true, 0, 0);
-                    puntiRett[0] = new PointF(0, 0);
-                    puntiRett[1] = new PointF(ClientRectangle.Width, 0);
-                    puntiRett[2] = new PointF(ClientRectangle.Width - 3, ClientRectangle.Height - 5);
-                    puntiRett[3] = new PointF(3, ClientRectangle.Height - 5);
-                    drawingPos[0] = 0;
-                    drawingPos[1] = 0;
+                    pBmp = Perspective.ImmagineProspettiva.PerspectiveMode2(image, Perspective.PerspectiveModus.VerticalDownMode2, ClientRectangle.Width - 6, true, true, 0, 0);
                     break;
                 case MetroTileClickPosition.Sinistra:
-                    pBmp = Perspective.ImmagineProspettiva.PerspectiveMode2(image, Perspective.PerspectiveModus.VerticalUpMode2, ClientRectangle.Height - 6, true, true, 0, 0);
-                    puntiRett[0] = new PointF(5, 3);
-                    puntiRett[1] = new PointF(ClientRectangle.Width, 0);
-                    puntiRett[2] = new PointF(ClientRectangle.Width, ClientRectangle.Height);
-                    puntiRett[3] = new PointF(5, ClientRectangle.Height - 3);
-                    drawingPos[0] = 5;
-                    drawingPos[1] = 0;
+                    pBmp = Perspective.ImmagineProspettiva.PerspectiveMode2(image, Perspective.PerspectiveModus.HorizontalUpMode2, ClientRectangle.Height - 6, true, true, 0, 0);
                     break;
                 default:
                     throw new Exception("Non si dovrebbe mai arrivare qui");
             }
-
-            int h = pBmp.Height;
-            int w = pBmp.Width;
+            baseGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             baseGraphics.DrawImage(pBmp, 0, 0);
-
-            //YLScsDrawing.Imaging.Filters.FreeTransform tranform = new YLScsDrawing.Imaging.Filters.FreeTransform();
-            //tranform.Bitmap = image;
-            //tranform.FourCorners = puntiRett;
-            //tranform.IsBilinearInterpolation = true;
-
-            //using (Bitmap perspectBmp = tranform.Bitmap)
-            //{
-            //    baseGraphics.DrawImage(perspectBmp, drawingPos[0], drawingPos[1]);
-            //}
             #endregion
         }
 
@@ -258,10 +261,14 @@ namespace Metro.Controlli
         {
             g.FillRectangle(new SolidBrush(BackColor), TileRectangle);
 
+            DrawIcona(g);
             DrawDescrizione(g);
 
             if (_isMouseHover)
                 DrawHoverBorder(g);
+
+            if (_isSelected)
+                DrawSelectionBorder(g);
         }
 
         protected virtual void DrawDescrizione(Graphics g)
@@ -272,22 +279,80 @@ namespace Metro.Controlli
 
             if (Dimensione == MetroTileSize.Media)
                 tff |= TextFormatFlags.HorizontalCenter;
-            
+
+            System.Drawing.Drawing2D.SmoothingMode oldMode = g.SmoothingMode;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             TextRenderer.DrawText(g, Descrizione, VisualManager.MetroTileTextFont, textRc, VisualManager.MetroTileTextColor, tff);
+            g.SmoothingMode = oldMode;
         }
 
         protected virtual void DrawHoverBorder(Graphics g)
         {
             Rectangle top, left, bottom, right;
-            top = new Rectangle(0, 0, ClientRectangle.Width, 2);
-            bottom = new Rectangle(0, ClientRectangle.Height - 2, ClientRectangle.Width, 2);
-            left = new Rectangle(0, 2, 2, ClientRectangle.Height - 4);
-            right = new Rectangle(ClientRectangle.Width - 2, 2, 2, ClientRectangle.Height - 4);
+            top = new Rectangle(0, 0, ClientRectangle.Width, 3);
+            bottom = new Rectangle(0, ClientRectangle.Height - 3, ClientRectangle.Width, 3);
+            left = new Rectangle(0, 3, 3, ClientRectangle.Height - 6);
+            right = new Rectangle(ClientRectangle.Width - 3, 3, 3, ClientRectangle.Height - 6);
 
             g.FillRectangle(new SolidBrush(VisualManager.MetroTileHoverBorderColor), top);
             g.FillRectangle(new SolidBrush(VisualManager.MetroTileHoverBorderColor), bottom);
             g.FillRectangle(new SolidBrush(VisualManager.MetroTileHoverBorderColor), left);
             g.FillRectangle(new SolidBrush(VisualManager.MetroTileHoverBorderColor), right);
+        }
+
+        protected virtual void DrawIcona(Graphics g)
+        {
+            if (Icona == null)
+                return;
+
+            Rectangle rcIcona = new Rectangle(0, 0, Icona.Width, Icona.Height);
+
+            int y = (ClientRectangle.Height - rcIcona.Height) / 2 - 10;
+            int x = (ClientRectangle.Width - rcIcona.Width) / 2;
+
+            if (MostraNumeroTile && NumeroTile > 0)
+            {
+                Rectangle rcCompleto = rcIcona;
+                Rectangle rcText = new Rectangle(5, y, 15, rcIcona.Height);
+
+                if (NumeroTile.ToString().Length == 2)
+                    rcText.Width += 17;
+                if (NumeroTile.ToString().Length == 3)
+                    rcText.Width += 32;
+
+                rcCompleto.Width += rcText.Width;
+
+                x = (ClientRectangle.Width - rcCompleto.Width) / 2;
+                rcIcona.Location = new Point(x, y);
+
+                rcText.Location = new Point(rcIcona.Right + 5, y);
+                TextRenderer.DrawText(g, NumeroTile.ToString(), VisualManager.MetroTileNumberFont, rcText, VisualManager.MetroTileTextColor);
+            }
+            else
+                rcIcona.Location = new Point(x, y);
+
+            g.DrawImage(Icona, rcIcona);
+        }
+
+        protected virtual void DrawSelectionBorder(Graphics g)
+        {
+            Rectangle top, left, bottom, right;
+            top = new Rectangle(3, 3, TileRectangle.Width, 3);
+            bottom = new Rectangle(3, TileRectangle.Height, TileRectangle.Width, 3);
+            left = new Rectangle(3, 6, 3, TileRectangle.Height - 6);
+            right = new Rectangle(TileRectangle.Width, 6, 3, TileRectangle.Height - 6);
+
+            Point[] pts = new Point[] { new Point(TileRectangle.Width - 30, 3), new Point(TileRectangle.Width, 3), new Point(TileRectangle.Width, 33) };
+
+            g.FillRectangle(new SolidBrush(VisualManager.MetroTileSelectedBorderColor), top);
+            g.FillRectangle(new SolidBrush(VisualManager.MetroTileSelectedBorderColor), bottom);
+            g.FillRectangle(new SolidBrush(VisualManager.MetroTileSelectedBorderColor), left);
+            g.FillRectangle(new SolidBrush(VisualManager.MetroTileSelectedBorderColor), right);
+            g.FillPolygon(new SolidBrush(VisualManager.MetroTileSelectedBorderColor), pts);
+
+            Point pt = new Point(TileRectangle.Width - 22, 3);
+            Font font = new Font(MetroGlobals.FontCollection.Families[1], 10f);
+            TextRenderer.DrawText(g, "\uE081", font, pt, VisualManager.MetroTileTextColor);
         }
 
         protected override void OnMouseEnter(EventArgs e)
@@ -319,6 +384,10 @@ namespace Metro.Controlli
         {
             _isMousePressed = false;
             _mouseClickPos = Point.Empty;
+
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+                _isSelected = !_isSelected;
+
             Invalidate();
 
             base.OnMouseUp(e);
@@ -382,10 +451,10 @@ namespace Metro.Controlli
             switch (Dimensione)
             {
                 case MetroTileSize.Media:
-                    Size = new Size(100, 100);
+                    Size = new Size(120, 120);
                     break;
                 case MetroTileSize.Grande:
-                    Size = new Size(200, 100);
+                    Size = new Size(240, 120);
                     break;
             }
         }

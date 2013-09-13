@@ -46,5 +46,25 @@ namespace Metro.Test
         {
             MetroMessageBox.Show("cliccato pulsante di ricerca");
         }
+
+        private void metroButton2_Click_1(object sender, EventArgs e)
+        {
+            metroTile1.NumeroTile++;
+        }
+
+        private void metroButton3_Click_1(object sender, EventArgs e)
+        {
+            metroTile2.NumeroTile++;
+        }
+
+        private void metroButton4_Click(object sender, EventArgs e)
+        {
+            metroTile1.NumeroTile = Convert.ToInt32(metroTextBox2.Text);
+        }
+
+        private void metroButton5_Click(object sender, EventArgs e)
+        {
+            metroTile2.NumeroTile = Convert.ToInt32(metroTextBox2.Text);
+        }
     }
 }
