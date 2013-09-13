@@ -198,7 +198,9 @@ namespace Metro.Componenti
             MetroTextBoxFont = new Font(MetroGlobals.FontCollection.Families[0], 10f);
             MetroComboBoxFont = new Font(MetroGlobals.FontCollection.Families[0], 10f);
             MetroWindowTitleFont = new Font(MetroGlobals.FontCollection.Families[0], 12.5f);
-            MetroSymbolFont = new Font(MetroGlobals.FontCollection.Families[1], 10);
+            MetroTileTextFont = new Font(MetroGlobals.FontCollection.Families[0], 9f);
+            MetroTileNumberFont = new Font(MetroGlobals.FontCollection.Families[0], 16f);
+            MetroSymbolFont = new Font(MetroGlobals.FontCollection.Families[1], 10f);
         }
 
         private CombinazionaColori _combinazioneColori;
@@ -344,6 +346,12 @@ namespace Metro.Componenti
         public Color MetroComboBoxPromptTextExpanded { get; set; }
         public Color MetroComboBoxPromptTextDisabled { get; set; }
         #endregion
+        #region Tile
+        public Color MetroTileBackColor { get; set; }
+        public Color MetroTileTextColor { get; set; }
+        public Color MetroTileHoverBorderColor { get; set; }
+        public Color MetroTileSelectedBorderColor { get; set; }
+        #endregion
         #endregion
 
         #region Fonts
@@ -354,6 +362,8 @@ namespace Metro.Componenti
         public Font MetroTextBoxFont { get; set; }
         public Font MetroComboBoxFont { get; set; }
         public Font MetroSymbolFont { get; set; }
+        public Font MetroTileTextFont { get; set; }
+        public Font MetroTileNumberFont { get; set; }
         #endregion
 
         private void UpdateColors()
@@ -501,6 +511,9 @@ namespace Metro.Componenti
                 MetroComboBoxPromptTextExpanded = Color.FromArgb(140, 140, 140);
                 MetroComboBoxPromptTextDisabled = Color.FromArgb(100, 100, 100);
                 #endregion
+                #region Tile
+                MetroTileHoverBorderColor = Color.FromArgb(200, 80, 80, 80);
+                #endregion
             }
 
             switch (CombinazioneColori)
@@ -544,6 +557,11 @@ namespace Metro.Componenti
                     MetroComboBoxFrecciaButtonExpanded = Color.FromArgb(255, 255, 255);
                     MetroComboBoxItemHover = Color.FromArgb(78, 166, 234);
                     MetroComboBoxItemTextHover = Color.FromArgb(255, 255, 255);
+                    #endregion
+                    #region Tile
+                    MetroTileBackColor = Color.FromArgb(78, 166, 234);
+                    MetroTileSelectedBorderColor = Color.FromArgb(21, 11, 176);
+                    MetroTileTextColor = Color.FromArgb(255, 255, 255);
                     #endregion
                     break;
                 case CombinazionaColori.Rosso:

@@ -65,6 +65,9 @@
     <Compile Include="Controlli\MetroTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controlli\MetroTile.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controlli\MetroToolTip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -80,12 +83,14 @@
     </Compile>
     <Compile Include="MetroGlobals.cs" />
     <Compile Include="Interfaccie\Interfaccie.cs" />
+    <Compile Include="PerspectiveImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utility.cs" />
     <Compile Include="WinApi.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\segoeui.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YLScsDrawing\YLScsDrawing.csproj">
+      <Project>{9d2f8461-e695-4ce1-8c42-217d602399cc}</Project>
+      <Name>YLScsDrawing</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

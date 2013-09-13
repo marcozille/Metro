@@ -62,6 +62,8 @@
             this.metroRoundButton35 = new Metro.Controlli.MetroRoundButton();
             this.metroRoundButton36 = new Metro.Controlli.MetroRoundButton();
             this.metroComboBox1 = new Metro.Controlli.MetroComboBox();
+            this.metroTile1 = new Metro.Controlli.MetroTile();
+            this.metroTile2 = new Metro.Controlli.MetroTile();
             this.SuspendLayout();
             // 
             // metroButton1
@@ -398,11 +400,43 @@
             this.metroComboBox1.Size = new System.Drawing.Size(213, 25);
             this.metroComboBox1.TabIndex = 36;
             // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(166)))), ((int)(((byte)(234)))));
+            this.metroTile1.CanAnimate = false;
+            this.metroTile1.Descrizione = "Prima tile";
+            this.metroTile1.Dimensione = Metro.Controlli.MetroTile.MetroTileSize.Media;
+            this.metroTile1.Location = new System.Drawing.Point(13, 256);
+            this.metroTile1.MostraNumeroTile = false;
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.NumeroTile = 0;
+            this.metroTile1.Size = new System.Drawing.Size(100, 100);
+            this.metroTile1.TabIndex = 37;
+            this.metroTile1.Text = "metroTile1";
+            // 
+            // metroTile2
+            // 
+            this.metroTile2.ActiveControl = null;
+            this.metroTile2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(166)))), ((int)(((byte)(234)))));
+            this.metroTile2.CanAnimate = false;
+            this.metroTile2.Descrizione = "Seconda tile vediamo se di qua f";
+            this.metroTile2.Dimensione = Metro.Controlli.MetroTile.MetroTileSize.Grande;
+            this.metroTile2.Location = new System.Drawing.Point(119, 256);
+            this.metroTile2.MostraNumeroTile = false;
+            this.metroTile2.Name = "metroTile2";
+            this.metroTile2.NumeroTile = 0;
+            this.metroTile2.Size = new System.Drawing.Size(200, 100);
+            this.metroTile2.TabIndex = 38;
+            this.metroTile2.Text = "metroTile2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 444);
+            this.Controls.Add(this.metroTile2);
+            this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.metroComboBox1);
             this.Controls.Add(this.metroRoundButton28);
             this.Controls.Add(this.metroRoundButton29);
@@ -481,6 +515,8 @@
         private Controlli.MetroRoundButton metroRoundButton35;
         private Controlli.MetroRoundButton metroRoundButton36;
         private Controlli.MetroComboBox metroComboBox1;
+        private Controlli.MetroTile metroTile1;
+        private Controlli.MetroTile metroTile2;
 
 
 
